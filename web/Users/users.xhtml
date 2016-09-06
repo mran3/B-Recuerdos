@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Bank :: Users</title>
+        <meta name="author" content="The Author"></meta>
+    </h:head>
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+        <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
+            <b:navbarLinks>
+                <b:dropMenu value="Users">
+                    <b:navLink value="Create User" outcome="createUser"></b:navLink>
+                    <b:navLink value="Consult User" outcome="consultUser"></b:navLink>
+                    <b:navLink value="Update User" outcome="updateUser"></b:navLink>
+                    <b:navLink value="Delete User" outcome="deleteUser"></b:navLink>
+                    <b:navLink value="Login User" outcome="loginUser"></b:navLink>
+                </b:dropMenu>
+            </b:navbarLinks>
+            <h:form styleClass="navbar-form navbar-right">
+                <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
+            </h:form>
+        </b:navBar>
+        <b:container>
+            <h:form>
+                <b:jumbotron>
+                    <b:icon name="glyphicon glyphicon-user" size="4x"/>
+                    <h1>Users</h1>
+                </b:jumbotron>
+            </h:form>
+        </b:container>
+        <b:container>
+            <h:form>
+                <b:row>
+                    <b:column col-md="3">
+                        <b:panel title="Create User" look="success">
+                            <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:button outcome="createUser" look="primary" value="Go" icon="plus"/>
+                        </b:panel>
+                    </b:column>
+                    <b:column col-md="3">
+                        <b:panel title="Consult User" look="info">
+                            <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:button outcome="consultUser" look="primary" value="Go" icon="search"/>
+                        </b:panel>
+                    </b:column>
+                    <b:column col-md="3">
+                        <b:panel title="Update User" look="warning">
+                            <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:button outcome="updateUser" look="primary" value="Go" icon="ok"/>
+                        </b:panel>
+                    </b:column>
+                    <b:column col-md="3">
+                        <b:panel title="Delete User" look="danger">
+                            <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:button outcome="deleteUser" look="primary" value="Go" icon="remove"/>
+                        </b:panel>
+                    </b:column>
+                </b:row>
+            </h:form>
+            <hr/>
+            <footer>
+                <p>Universidad Nacional de Colombia © 2016</p>
+            </footer>
+        </b:container>
+    </h:body>
+</html>
+
+
+

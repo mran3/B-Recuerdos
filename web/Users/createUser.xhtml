@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Bank :: Create User</title>
+        <meta name="author" content="The Author"></meta>
+        <style type="text/css">
+            .form-jumbotron {
+                padding: 20px;
+                text-align: center;
+            }
+            .form-panel {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+        </style>
+    </h:head>
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+        <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
+            <b:navbarLinks>
+                <b:dropMenu value="Users">
+                    <b:navLink value="Create User" outcome="createUser"></b:navLink>
+                    <b:navLink value="Consult User" outcome="consultUser"></b:navLink>
+                    <b:navLink value="Update User" outcome="updateUser"></b:navLink>
+                    <b:navLink value="Delete User" outcome="deleteUser"></b:navLink>
+                </b:dropMenu>
+            </b:navbarLinks>
+            <h:form styleClass="navbar-form navbar-right">
+                <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
+            </h:form>
+        </b:navBar>
+        <b:container>
+            <h:form>
+                <b:jumbotron styleClass="form-jumbotron">
+                    <h1>Create User</h1>
+                </b:jumbotron>    
+            </h:form>
+        </b:container>
+        <b:container>
+            <b:row>
+                <b:column col-md="6" offset="3">
+                    <b:panel title="Create User" look="success">
+                        <h:form styleClass="form-panel"  >
+                            <b:inputText id="document" placeholder="Document" value="#{userBean.document}" required="true" requiredMessage="The document is required!">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:message for="@previous" />
+                            <b:inputText id="firstName" placeholder="First name" value="#{userBean.firstName}" required="true" requiredMessage="The first name is required!">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:message for="@previous" />
+                            <b:inputText id="lastName" placeholder="Last name" value="#{userBean.lastName}" required="true" requiredMessage="The last name is required!">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:inputText id="userName" placeholder="Username" value="#{userBean.userName}" required="true" requiredMessage="The username is required!">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:inputSecret id="password" placeholder="Password" value="#{userBean.password}" required="true"  requiredMessage="The password is required!">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputSecret>
+                            <b:message for="@previous" />
+                            <b:commandButton action="#{userBean.createUser()}" value="Create" look="success" icon="plus" iconAlign="left"/>
+                        </h:form>
+                        <b:alert severity="success" title="Message" closable="true">#{userBean.message}</b:alert>
+                    </b:panel>
+                </b:column>
+            </b:row>
+            <hr/>
+            <footer>
+                <p>Universidad Nacional de Colombia © 2016</p>
+            </footer>
+        </b:container>
+    </h:body>
+</html>
