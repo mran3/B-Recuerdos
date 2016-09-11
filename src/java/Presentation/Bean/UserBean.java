@@ -84,14 +84,16 @@ public class UserBean implements Serializable {
     
     public void consultUser() {
         UserController userController = new UserController();
+        /*
         firstName = userController.consultUser(document).getFirstName();
         lastName = userController.consultUser(document).getLastName();
         userName = userController.consultUser(document).getUserName();
+        */
     }
     
     public void loginUser() {
         UserController userController = new UserController();
-        userName = userController.loginUser(userName).getUserName();
+    //    userName = userController.loginUser(userName).getUserName();
     }
     
     public void updateUser() {

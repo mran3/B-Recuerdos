@@ -21,12 +21,13 @@ public class UserController {
                              String password) {
         
         User user = new User();
+        /*
         user.setDocument(document);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setUserName(userName);
         user.setPassword(password);
-        
+        */
         UserDAO userDAO = new UserDAO();
         User userCreate = userDAO.createUser(user);
         
@@ -68,12 +69,13 @@ public class UserController {
                              String password) {
         
         User user = new User();
+        /*
         user.setDocument(document);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setUserName(userName);
         user.setPassword(password);
-        
+        */
         UserDAO userDAO = new UserDAO();
         User userUpdate = userDAO.updateUser(user);
         
