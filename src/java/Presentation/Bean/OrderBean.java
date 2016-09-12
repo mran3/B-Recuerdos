@@ -27,10 +27,29 @@ public class OrderBean {
     private Long totalPrice;
     private Integer userId;
     private Collection<Solditems> solditemsCollection;
+    
+    private String message;
+
+    public Integer getQuanty() {
+        return quanty;
+    }
+
+    public void setQuanty(Integer quanty) {
+        this.quanty = quanty;
+    }
+    private Integer quanty;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public void addToCart(Integer id, Integer quanty, Long price) {
         getSolditemsCollection().add(new Solditems(quanty, id));
-        totalPrice += price;
+        setTotalPrice(getTotalPrice()+ price) ;
     }
 
     public Integer getId() {
@@ -53,10 +72,14 @@ public class OrderBean {
     }
 
     public Long getTotalPrice() {
+        if(totalPrice == null)
+            totalPrice = Long.valueOf("0");
         return totalPrice;
     }
 
     public void setTotalPrice(Long totalPrice) {
+        if(totalPrice == null)
+            totalPrice = Long.valueOf("0");
         this.totalPrice = totalPrice;
     }
 
