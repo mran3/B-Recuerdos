@@ -26,14 +26,16 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author JuanC Sexy
  */
 @Entity
-@Table(name = "users")
+@Table(name = "shops")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
-    @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
-    @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
-    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
-public class User implements Serializable {
+    @NamedQuery(name = "Shops.findAll", query = "SELECT s FROM Shops s"),
+    @NamedQuery(name = "Shops.findById", query = "SELECT s FROM Shops s WHERE s.id = :id"),
+    @NamedQuery(name = "Shops.findByManagerId", query = "SELECT s FROM Shops s WHERE s.managerId = :managerId"),
+    @NamedQuery(name = "Shops.findByName", query = "SELECT s FROM Shops s WHERE s.name = :name"),
+    @NamedQuery(name = "Shops.findByAddress", query = "SELECT s FROM Shops s WHERE s.address = :address"),
+    @NamedQuery(name = "Shops.findByUrl", query = "SELECT s FROM Shops s WHERE s.url = :url")})
+public class Shop implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,22 +43,26 @@ public class User implements Serializable {
     @NotNull
     @Column(name = "id")
     private Integer id;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Column(name = "manager_id")
+    private Integer managerId;
     @Size(max = 255)
-    @Column(name = "email")
-    private String email;
+    @Column(name = "name")
+    private String name;
     @Size(max = 255)
-    @Column(name = "password")
-    private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private Collection<Order> ordersCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userid")
+    @Column(name = "address")
+    private String address;
+    @Size(max = 255)
+    @Column(name = "url")
+    private String url;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shopid")
     private Collection<Employee> employeesCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shopid")
+    private Collection<Item> itemsCollection;
 
-    public User() {
+    public Shop() {
     }
 
-    public User(Integer id) {
+    public Shop(Integer id) {
         this.id = id;
     }
 
@@ -68,29 +74,36 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getManagerId() {
+        return managerId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setManagerId(Integer managerId) {
+        this.managerId = managerId;
     }
 
-    public String getPassword() {
-        return password;
+    public String getName() {
+        return name;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @XmlTransient
-    public Collection<Order> getOrdersCollection() {
-        return ordersCollection;
+    public String getAddress() {
+        return address;
     }
 
-    public void setOrdersCollection(Collection<Order> ordersCollection) {
-        this.ordersCollection = ordersCollection;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @XmlTransient
@@ -100,6 +113,15 @@ public class User implements Serializable {
 
     public void setEmployeesCollection(Collection<Employee> employeesCollection) {
         this.employeesCollection = employeesCollection;
+    }
+
+    @XmlTransient
+    public Collection<Item> getItemsCollection() {
+        return itemsCollection;
+    }
+
+    public void setItemsCollection(Collection<Item> itemsCollection) {
+        this.itemsCollection = itemsCollection;
     }
 
     @Override
@@ -112,10 +134,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Shop)) {
             return false;
         }
-        User other = (User) object;
+        Shop other = (Shop) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -124,7 +146,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "DataAccess.Entity.Users[ id=" + id + " ]";
+        return "DataAccess.Entity.Shops[ id=" + id + " ]";
     }
     
 }

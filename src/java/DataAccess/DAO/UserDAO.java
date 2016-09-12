@@ -62,10 +62,12 @@ public class UserDAO {
     }
     
     public User updateUser(User userUpdated) {
+        /* 
         EntityManager em = emf.createEntityManager();
-        User user = em.find(User.class, userUpdated.getDocument());
+        //User user = em.find(User.class, userUpdated.getDocument());
         em.getTransaction().begin();
         try {
+            
             user.setDocument(userUpdated.getDocument());
             user.setFirstName(userUpdated.getFirstName());
             user.setLastName(userUpdated.getLastName());
@@ -79,6 +81,8 @@ public class UserDAO {
             em.close();
         }
         return user;
+        */
+        return null;
     }
     
     public String deleteUser(Integer document) {
