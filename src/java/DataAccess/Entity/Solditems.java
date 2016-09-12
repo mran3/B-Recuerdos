@@ -7,14 +7,8 @@ package DataAccess.Entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -23,14 +17,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Solditems implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
     @Column(name = "quantity")
     private Integer quantity;
     @JoinColumn(name = "item_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Item item;
+    private Integer item;
     
     public Solditems() {
+    }
+
+    public Solditems(Integer quantity, Integer item) {
+        this.quantity = quantity;
+        this.item = item;
     }
 
    
@@ -42,11 +40,11 @@ public class Solditems implements Serializable {
         this.quantity = quantity;
     }
 
-    public Item getItems() {
+    public Integer getItems() {
         return item;
     }
 
-    public void setItems(Item item) {
+    public void setItems(Integer item) {
         this.item = item;
     }
 

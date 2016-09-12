@@ -59,9 +59,18 @@ public class Item implements Serializable {
     private Integer stock;
     @JoinColumn(name = "Shop_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Shop shopid;
+    private Integer shopid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private Collection<Solditems> solditemsCollection;
+
+    public Item(Integer id, String name, String description, BigInteger price, Integer stock, Integer shopid) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stock = stock;
+        this.shopid = shopid;
+    }
 
     public Item() {
     }
@@ -110,11 +119,11 @@ public class Item implements Serializable {
         this.stock = stock;
     }
 
-    public Shop getShopid() {
+    public int getShopid() {
         return shopid;
     }
 
-    public void setShopid(Shop shopid) {
+    public void setShopid(int shopid) {
         this.shopid = shopid;
     }
 

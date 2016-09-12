@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Recuerdos :: Ventas</title>
+        <meta name="author" content="The Author"></meta>
+    </h:head>
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+        <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
+            <b:navbarLinks>
+                <b:dropMenu value="Items">
+                    <b:navLink value="Create Item" outcome="createItem"></b:navLink>
+                    <b:navLink value="Consult Item" outcome="consultItem"></b:navLink>
+                    <b:navLink value="Update Item" outcome="updateItem"></b:navLink>
+                    <b:navLink value="Delete Item" outcome="deleteItem"></b:navLink>
+                    <b:navLink value="Login Item" outcome="loginItem"></b:navLink>
+                </b:dropMenu>
+            </b:navbarLinks>
+            <h:form styleClass="navbar-form navbar-right">
+                <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
+            </h:form>
+        </b:navBar>
+        <b:container>
+            <h:form>
+                <b:jumbotron>
+                    <b:icon name="glyphicon glyphicon-euro" size="4x"/>
+                    <h2>Items for sale</h2>
+                </b:jumbotron>
+            </h:form>
+        </b:container>
+        <b:container>
+            <b:tab>
+                <ui:repeat var="item" varStatus="status" value="#{itemBean.list}">  
+                    <b:column col-md="3" offset="#{status.index%3}">
+                        <h3>#{status.index} - ID: #{item.id}</h3><br/>  
+                        <h3>Name: #{item.name}</h3><br/>
+                        <h5>Description #{item.description}</h5><br/>
+                        <h5>Price: #{item.price}</h5><br/>
+                        <h5>Stock: #{item.stock}</h5><br/>
+                        
+                        <h:form>
+                            <b:inputText id="Quanty_#{status.index}" placeholder="Quanty" value="0">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+
+
+                            <b:commandButton action="#{orderBean.addToCart(item.id, 1, item.price)}" value="Buy" look="success" icon="plus" iconAlign="left"/>
+                        </h:form>  
+                    </b:column>
+
+
+                </ui:repeat> 
+            </b:tab>
+        </b:container>
+        <b:row></b:row>
+      
+    </h:body>
+</html>
+
+
+

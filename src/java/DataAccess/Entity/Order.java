@@ -50,10 +50,10 @@ public class Order implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date;
     @Column(name = "total_price")
-    private BigInteger totalPrice;
+    private Long totalPrice;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private User userId;
+    private Integer userId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
     private Collection<Solditems> solditemsCollection;
 
@@ -80,19 +80,19 @@ public class Order implements Serializable {
         this.date = date;
     }
 
-    public BigInteger getTotalPrice() {
+    public Long getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigInteger totalPrice) {
+    public void setTotalPrice(Long totalPrice) {
         this.totalPrice = totalPrice;
     }
 
-    public User getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

@@ -5,7 +5,7 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Bank :: Delete User</title>
+        <title>Bank :: Create User</title>
         <meta name="author" content="The Author"></meta>
         <style type="text/css">
             .form-jumbotron {
@@ -36,24 +36,48 @@
         <b:container>
             <h:form>
                 <b:jumbotron styleClass="form-jumbotron">
-                    <h1>Delete Item</h1>
+                    <h1>Create Item</h1>
                 </b:jumbotron>    
             </h:form>
         </b:container>
         <b:container>
             <b:row>
                 <b:column col-md="6" offset="3">
-                    <b:panel title="Delete User" look="danger">
+                    <b:panel title="Create User" look="success">
                         <h:form styleClass="form-panel">
-                            <b:inputText id="document" placeholder="Document" value="#{itemBean.id}" required="true" requiredMessage="The document is required!">
+                            <b:inputText id="ID" placeholder="ID" value="#{itemBean.id}" required="true" requiredMessage="The document is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
-                            <b:message for="@previous" />
-                            <b:commandButton action="#{itemBean.deleteItem()}" value="Delete" look="danger" icon="remove" iconAlign="left"/>
+                            <b:inputText id="Name" placeholder="Name" value="#{itemBean.name}">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:inputText id="Description" placeholder="Description" value="#{itemBean.description}">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:inputText id="Stock" placeholder="Stock" value="#{itemBean.stock}">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:inputText id="price" placeholder="Price" value="#{itemBean.price}">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:inputText id="shopid" placeholder="ID Shop" value="#{itemBean.shopid}">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:commandButton action="#{itemBean.createItem()}" value="Create" look="success" icon="plus" iconAlign="left"/>
                         </h:form>
-                        <b:alert severity="danger" title="Message" closable="true">#{itemBean.message}</b:alert>
+                        <b:alert severity="success" title="Message" closable="true">#{itemBean.message}</b:alert>
                     </b:panel>
                 </b:column>
             </b:row>
@@ -64,4 +88,3 @@
         </b:container>
     </h:body>
 </html>
-
