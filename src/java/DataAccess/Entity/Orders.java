@@ -13,6 +13,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,28 +24,27 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author JuanC Sexy
+ * @author fasto
  */
 @Entity
-@Table(name = "orders")
+@Table(name = "Orders")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Orders.findAll", query = "SELECT o FROM Orders o"),
     @NamedQuery(name = "Orders.findById", query = "SELECT o FROM Orders o WHERE o.id = :id"),
     @NamedQuery(name = "Orders.findByDate", query = "SELECT o FROM Orders o WHERE o.date = :date"),
     @NamedQuery(name = "Orders.findByTotalPrice", query = "SELECT o FROM Orders o WHERE o.totalPrice = :totalPrice")})
-public class Order implements Serializable {
+public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = true)
     @Column(name = "id")
     private Integer id;
     @Column(name = "date")
@@ -52,15 +53,15 @@ public class Order implements Serializable {
     @Column(name = "total_price")
     private BigInteger totalPrice;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private User userId;
+    @ManyToOne(optional = true)
+    private Users userId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
-    private Collection<Solditems> solditemsCollection;
+    private Collection<SoldItems> soldItemsCollection;
 
-    public Order() {
+    public Orders() {
     }
 
-    public Order(Integer id) {
+    public Orders(Integer id) {
         this.id = id;
     }
 
@@ -88,21 +89,21 @@ public class Order implements Serializable {
         this.totalPrice = totalPrice;
     }
 
-    public User getUserId() {
+    public Users getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(Users userId) {
         this.userId = userId;
     }
 
     @XmlTransient
-    public Collection<Solditems> getSolditemsCollection() {
-        return solditemsCollection;
+    public Collection<SoldItems> getSoldItemsCollection() {
+        return soldItemsCollection;
     }
 
-    public void setSolditemsCollection(Collection<Solditems> solditemsCollection) {
-        this.solditemsCollection = solditemsCollection;
+    public void setSoldItemsCollection(Collection<SoldItems> soldItemsCollection) {
+        this.soldItemsCollection = soldItemsCollection;
     }
 
     @Override
@@ -115,10 +116,10 @@ public class Order implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order)) {
+        if (!(object instanceof Orders)) {
             return false;
         }
-        Order other = (Order) object;
+        Orders other = (Orders) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

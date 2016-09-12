@@ -6,7 +6,7 @@
 package BusinessLogic.Controller;
 
 import DataAccess.DAO.UserDAO;
-import DataAccess.Entity.User;
+import DataAccess.Entity.Users;
 
 /**
  *
@@ -14,13 +14,18 @@ import DataAccess.Entity.User;
  */
 public class UserController {
     
-    public String createUser(Integer document,
-                             String firstName,
-                             String lastName,
-                             String userName,
-                             String password) {
+    public String createUser(Integer id,
+                            String email,
+                             String password,
+                             Integer role,
+                             Integer shop_id) {
         
-        User user = new User();
+        Users user = new Users();
+        user.setId(id);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setRole(1);
+        user.setShopId(null);
         /*
         user.setDocument(document);
         user.setFirstName(firstName);
@@ -29,7 +34,7 @@ public class UserController {
         user.setPassword(password);
         */
         UserDAO userDAO = new UserDAO();
-        User userCreate = userDAO.createUser(user);
+        Users userCreate = userDAO.createUser(user);
         
         if (userCreate != null) {
             return "The user has been created successfully!";
@@ -38,10 +43,10 @@ public class UserController {
         }        
     } 
     
-    public User consultUser(Integer document) {
+    public Users consultUser(Integer document) {
         
         UserDAO userDAO = new UserDAO();
-        User userConsult = userDAO.consultUser(document);
+        Users userConsult = userDAO.consultUser(document);
         
         if (userConsult != null) {
             return userConsult;
@@ -50,10 +55,10 @@ public class UserController {
         }        
     }
     
-    public User loginUser(String userName) {
+    public Users loginUser(String userName) {
         
         UserDAO userDAO = new UserDAO();
-        User userLogin = userDAO.loginUser(userName);
+        Users userLogin = userDAO.loginUser(userName);
         
         if (userLogin != null) {
             return userLogin;
@@ -62,13 +67,12 @@ public class UserController {
         }        
     }
     
-    public String updateUser(Integer document,
-                             String firstName,
-                             String lastName,
-                             String userName,
-                             String password) {
+    public String updateUser(String email,
+                             String password,
+                             Integer role,
+                             Integer shop_id) {
         
-        User user = new User();
+        Users user = new Users();
         /*
         user.setDocument(document);
         user.setFirstName(firstName);
@@ -77,7 +81,7 @@ public class UserController {
         user.setPassword(password);
         */
         UserDAO userDAO = new UserDAO();
-        User userUpdate = userDAO.updateUser(user);
+        Users userUpdate = userDAO.updateUser(user);
         
         if (userUpdate != null) {
             return "The user has been updated successfully!";

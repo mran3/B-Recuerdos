@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -20,17 +22,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author JuanC Sexy
+ * @author fasto
  */
 @Entity
-@Table(name = "items")
+@Table(name = "Items")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Items.findAll", query = "SELECT i FROM Items i"),
@@ -38,12 +39,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Items.findByName", query = "SELECT i FROM Items i WHERE i.name = :name"),
     @NamedQuery(name = "Items.findByPrice", query = "SELECT i FROM Items i WHERE i.price = :price"),
     @NamedQuery(name = "Items.findByStock", query = "SELECT i FROM Items i WHERE i.stock = :stock")})
-public class Item implements Serializable {
+public class Items implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id")
     private Integer id;
     @Size(max = 255)
@@ -59,14 +60,14 @@ public class Item implements Serializable {
     private Integer stock;
     @JoinColumn(name = "Shop_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Shop shopid;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
-    private Collection<Solditems> solditemsCollection;
+    private Shops shopid;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "items")
+    private Collection<SoldItems> soldItemsCollection;
 
-    public Item() {
+    public Items() {
     }
 
-    public Item(Integer id) {
+    public Items(Integer id) {
         this.id = id;
     }
 
@@ -110,21 +111,21 @@ public class Item implements Serializable {
         this.stock = stock;
     }
 
-    public Shop getShopid() {
+    public Shops getShopid() {
         return shopid;
     }
 
-    public void setShopid(Shop shopid) {
+    public void setShopid(Shops shopid) {
         this.shopid = shopid;
     }
 
     @XmlTransient
-    public Collection<Solditems> getSolditemsCollection() {
-        return solditemsCollection;
+    public Collection<SoldItems> getSoldItemsCollection() {
+        return soldItemsCollection;
     }
 
-    public void setSolditemsCollection(Collection<Solditems> solditemsCollection) {
-        this.solditemsCollection = solditemsCollection;
+    public void setSoldItemsCollection(Collection<SoldItems> soldItemsCollection) {
+        this.soldItemsCollection = soldItemsCollection;
     }
 
     @Override
@@ -137,10 +138,10 @@ public class Item implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Item)) {
+        if (!(object instanceof Items)) {
             return false;
         }
-        Item other = (Item) object;
+        Items other = (Items) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

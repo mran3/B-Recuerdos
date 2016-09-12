@@ -11,22 +11,23 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author JuanC Sexy
+ * @author fasto
  */
 @Entity
-@Table(name = "shops")
+@Table(name = "Shops")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Shops.findAll", query = "SELECT s FROM Shops s"),
@@ -35,12 +36,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Shops.findByName", query = "SELECT s FROM Shops s WHERE s.name = :name"),
     @NamedQuery(name = "Shops.findByAddress", query = "SELECT s FROM Shops s WHERE s.address = :address"),
     @NamedQuery(name = "Shops.findByUrl", query = "SELECT s FROM Shops s WHERE s.url = :url")})
-public class Shop implements Serializable {
+public class Shops implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = true)
     @Column(name = "id")
     private Integer id;
     @Column(name = "manager_id")
@@ -55,14 +56,14 @@ public class Shop implements Serializable {
     @Column(name = "url")
     private String url;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "shopid")
-    private Collection<Employee> employeesCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shopid")
-    private Collection<Item> itemsCollection;
+    private Collection<Items> itemsCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shopId")
+    private Collection<Users> usersCollection;
 
-    public Shop() {
+    public Shops() {
     }
 
-    public Shop(Integer id) {
+    public Shops(Integer id) {
         this.id = id;
     }
 
@@ -107,21 +108,21 @@ public class Shop implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Employee> getEmployeesCollection() {
-        return employeesCollection;
-    }
-
-    public void setEmployeesCollection(Collection<Employee> employeesCollection) {
-        this.employeesCollection = employeesCollection;
-    }
-
-    @XmlTransient
-    public Collection<Item> getItemsCollection() {
+    public Collection<Items> getItemsCollection() {
         return itemsCollection;
     }
 
-    public void setItemsCollection(Collection<Item> itemsCollection) {
+    public void setItemsCollection(Collection<Items> itemsCollection) {
         this.itemsCollection = itemsCollection;
+    }
+
+    @XmlTransient
+    public Collection<Users> getUsersCollection() {
+        return usersCollection;
+    }
+
+    public void setUsersCollection(Collection<Users> usersCollection) {
+        this.usersCollection = usersCollection;
     }
 
     @Override
@@ -134,10 +135,10 @@ public class Shop implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Shop)) {
+        if (!(object instanceof Shops)) {
             return false;
         }
-        Shop other = (Shop) object;
+        Shops other = (Shops) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

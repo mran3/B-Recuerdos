@@ -11,34 +11,38 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author JuanC Sexy
+ * @author fasto
  */
 @Entity
-@Table(name = "users")
+@Table(name = "Users")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
     @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
     @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
-    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
-public class User implements Serializable {
+    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
+    @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role")})
+public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy =GenerationType.AUTO)
+    @Basic(optional = true)
     @Column(name = "id")
     private Integer id;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
@@ -48,15 +52,18 @@ public class User implements Serializable {
     @Size(max = 255)
     @Column(name = "password")
     private String password;
+    @Column(name = "role")
+    private Integer role;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private Collection<Order> ordersCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userid")
-    private Collection<Employee> employeesCollection;
+    private Collection<Orders> ordersCollection;
+    @JoinColumn(name = "shop_id", referencedColumnName = "id")
+    @ManyToOne(optional = true)
+    private Shops shopId;
 
-    public User() {
+    public Users() {
     }
 
-    public User(Integer id) {
+    public Users(Integer id) {
         this.id = id;
     }
 
@@ -84,22 +91,29 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
     @XmlTransient
-    public Collection<Order> getOrdersCollection() {
+    public Collection<Orders> getOrdersCollection() {
         return ordersCollection;
     }
 
-    public void setOrdersCollection(Collection<Order> ordersCollection) {
+    public void setOrdersCollection(Collection<Orders> ordersCollection) {
         this.ordersCollection = ordersCollection;
     }
 
-    @XmlTransient
-    public Collection<Employee> getEmployeesCollection() {
-        return employeesCollection;
+    public Shops getShopId() {
+        return shopId;
     }
 
-    public void setEmployeesCollection(Collection<Employee> employeesCollection) {
-        this.employeesCollection = employeesCollection;
+    public void setShopId(Shops shopId) {
+        this.shopId = shopId;
     }
 
     @Override
@@ -112,10 +126,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Users)) {
             return false;
         }
-        User other = (User) object;
+        Users other = (Users) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
