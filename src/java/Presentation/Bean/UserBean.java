@@ -7,8 +7,10 @@ package Presentation.Bean;
 
 import BusinessLogic.Controller.UserController;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -18,43 +20,30 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class UserBean implements Serializable {
     
-    public Integer document;
-    private String firstName;
-    private String lastName;
-    private String userName;
+//    public Integer document;
+//    private String firstName;
+//    private String lastName;
+//    private String userName;
+    private Integer id;
+    private String email;
     private String password;
-    private String message;
-
-    public Integer getDocument() {
-        return document;
+    private Integer role;
+    private String message = "";
+    
+    public Integer getId() {
+        return id;
     }
 
-    public void setDocument(Integer document) {
-        this.document = document;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -75,37 +64,49 @@ public class UserBean implements Serializable {
     
     public void createUser() {
         UserController userController = new UserController();
-        message = userController.createUser(document,
-                                            firstName,
-                                            lastName,
-                                            userName,
-                                            password);
+        message = userController.createUser(id, email,
+                                            password, 1, null);
     }
     
     public void consultUser() {
         UserController userController = new UserController();
+        /*
         firstName = userController.consultUser(document).getFirstName();
         lastName = userController.consultUser(document).getLastName();
         userName = userController.consultUser(document).getUserName();
+        */
     }
     
-    public void loginUser() {
-        UserController userController = new UserController();
-        userName = userController.loginUser(userName).getUserName();
+    public String loginUser() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        UserController loginUsers = new UserController();
+        String response = loginUsers.loginUser(email, password);
+        if (response.equals("err1")){
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Fall� el Login!",
+                    "El usuario no existe.");
+            context.addMessage(null, message);
+            return null;
+        } else if (response.equals("err2")) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Fall� el Login!",
+                    "El password no es correcto.");
+            context.addMessage(null, message);
+            return null;
+        } else {
+            return response;
+        }
     }
     
     public void updateUser() {
         UserController userController = new UserController();
-        message = userController.updateUser(document,
-                                            firstName,
-                                            lastName,
-                                            userName,
-                                            password); 
+        message = userController.updateUser(email,
+                                            password,1, null); 
     }
     
     public void deleteUser() {
         UserController userController = new UserController();
-        message = userController.deleteUser(document);
+        //message = userController.deleteUser(document);
     }
     
 }

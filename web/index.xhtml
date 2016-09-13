@@ -4,11 +4,14 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Bank</title>
+        <title>Recuerdos</title>
         <meta name="author" content="The Author"></meta>
+        <link rel="stylesheet" href="styles.css"/>
     </h:head>
     <h:body style="padding-top: 50px; padding-bottom: 20px;">
-        <b:navBar brand="Bank" inverse="true" fixed="top">
+        <img src="img/logo.png" />
+        <b:navBar  inverse="true" fixed="top">
+            <img id="logo" src="img/logo3.png" />
             <b:navbarLinks>
                 <b:dropMenu value="Users">
                     <b:navLink value="Create User" outcome="Users/createUser"></b:navLink>
@@ -17,18 +20,20 @@
                     <b:navLink value="Delete User" outcome="Users/deleteUser"></b:navLink>
                 </b:dropMenu>
             </b:navbarLinks>
-            <h:form styleClass="navbar-form navbar-right">
-                <b:button outcome="Users/loginUser" value="Sign In" look="primary" icon="log-in" iconAlign="left"/>
+            <h:form styleClass="navbar-form navbar-right auth-buttons">
+                <b:button outcome="Users/loginUser" value="Ingresa" look="primary" icon="log-in" iconAlign="left"/>
+                <b:button outcome="Users/createUser" value="Registrate" look="primary" icon="star-empty" iconAlign="left"/>
             </h:form>
         </b:navBar>
-        <b:jumbotron>
-            <b:container>
-                <h1>Welcome!</h1>
+        <b:jumbotron class="hero">
+<!--            <b:container>
+                <h1>Bienvenido a Recuerdos Planetarios!</h1>
+                <img src="img/planet.png" />
                 <p>This is an application example for the course "Software Architecture 2016-II".</p>
                 <p>
                     <a href="https://sites.google.com/a/unal.edu.co/software-architecture-2016-ii/" class="btn btn-lg btn-info">View Course »</a>
                 </p>
-            </b:container>
+            </b:container>-->
         </b:jumbotron>
         <b:container>
             <h:form>
