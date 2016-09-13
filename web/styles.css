@@ -15,4 +15,19 @@ img{
     width: 300px;
     float:left;
 }
+.auth-buttons button{
+    display: block;
+    width: 10em;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+.hero{
+background: url(img/hero.jpg);
+min-height: 397px;
+background-size: cover;
+width: 79%;
+margin: auto;
+background-repeat: no-repeat;
+margin-top: 3rem;
+}
 
