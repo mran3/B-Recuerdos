@@ -6,23 +6,17 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,13 +30,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
     @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
-    @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role")})
+    @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role"),
+    @NamedQuery(name = "Users.findByShopId", query = "SELECT u FROM Users u WHERE u.shopId = :shopId")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy =GenerationType.AUTO)
-    @Basic(optional = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
@@ -54,11 +49,8 @@ public class Users implements Serializable {
     private String password;
     @Column(name = "role")
     private Integer role;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private Collection<Orders> ordersCollection;
-    @JoinColumn(name = "shop_id", referencedColumnName = "id")
-    @ManyToOne(optional = true)
-    private Shops shopId;
+    @Column(name = "shop_id")
+    private Integer shopId;
 
     public Users() {
     }
@@ -99,20 +91,11 @@ public class Users implements Serializable {
         this.role = role;
     }
 
-    @XmlTransient
-    public Collection<Orders> getOrdersCollection() {
-        return ordersCollection;
-    }
-
-    public void setOrdersCollection(Collection<Orders> ordersCollection) {
-        this.ordersCollection = ordersCollection;
-    }
-
-    public Shops getShopId() {
+    public Integer getShopId() {
         return shopId;
     }
 
-    public void setShopId(Shops shopId) {
+    public void setShopId(Integer shopId) {
         this.shopId = shopId;
     }
 

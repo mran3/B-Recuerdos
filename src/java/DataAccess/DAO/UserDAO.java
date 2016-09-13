@@ -17,7 +17,7 @@ import javax.persistence.Query;
  */
 public class UserDAO {
     
-    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("B-RecuerdosPU");
+    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("pupuputa");
     
     public Users createUser(Users user) {
         EntityManager em = emf.createEntityManager();

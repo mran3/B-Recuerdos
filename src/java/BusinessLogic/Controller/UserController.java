@@ -10,7 +10,7 @@ import DataAccess.Entity.Users;
 
 /**
  *
- * @author javergarav
+ * @author fasto
  */
 public class UserController {
     
@@ -37,9 +37,9 @@ public class UserController {
         Users userCreate = userDAO.createUser(user);
         
         if (userCreate != null) {
-            return "The user has been created successfully!";
+            return "El usuario fue creado";
         } else {
-            return "The user has not been created!";
+            return "El usuario NO fue creado";
         }        
     } 
     

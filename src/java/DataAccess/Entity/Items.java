@@ -7,24 +7,18 @@ package DataAccess.Entity;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,7 +32,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Items.findById", query = "SELECT i FROM Items i WHERE i.id = :id"),
     @NamedQuery(name = "Items.findByName", query = "SELECT i FROM Items i WHERE i.name = :name"),
     @NamedQuery(name = "Items.findByPrice", query = "SELECT i FROM Items i WHERE i.price = :price"),
-    @NamedQuery(name = "Items.findByStock", query = "SELECT i FROM Items i WHERE i.stock = :stock")})
+    @NamedQuery(name = "Items.findByStock", query = "SELECT i FROM Items i WHERE i.stock = :stock"),
+    @NamedQuery(name = "Items.findByShopId", query = "SELECT i FROM Items i WHERE i.shopId = :shopId")})
 public class Items implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,11 +53,8 @@ public class Items implements Serializable {
     private BigInteger price;
     @Column(name = "stock")
     private Integer stock;
-    @JoinColumn(name = "Shop_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Shops shopid;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "items")
-    private Collection<SoldItems> soldItemsCollection;
+    @Column(name = "shop_id")
+    private Integer shopId;
 
     public Items() {
     }
@@ -111,21 +103,12 @@ public class Items implements Serializable {
         this.stock = stock;
     }
 
-    public Shops getShopid() {
-        return shopid;
+    public Integer getShopId() {
+        return shopId;
     }
 
-    public void setShopid(Shops shopid) {
-        this.shopid = shopid;
-    }
-
-    @XmlTransient
-    public Collection<SoldItems> getSoldItemsCollection() {
-        return soldItemsCollection;
-    }
-
-    public void setSoldItemsCollection(Collection<SoldItems> soldItemsCollection) {
-        this.soldItemsCollection = soldItemsCollection;
+    public void setShopId(Integer shopId) {
+        this.shopId = shopId;
     }
 
     @Override

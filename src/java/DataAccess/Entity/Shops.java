@@ -6,9 +6,7 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -41,7 +37,7 @@ public class Shops implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = true)
+    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     @Column(name = "manager_id")
@@ -55,10 +51,6 @@ public class Shops implements Serializable {
     @Size(max = 255)
     @Column(name = "url")
     private String url;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shopid")
-    private Collection<Items> itemsCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shopId")
-    private Collection<Users> usersCollection;
 
     public Shops() {
     }
@@ -105,24 +97,6 @@ public class Shops implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    @XmlTransient
-    public Collection<Items> getItemsCollection() {
-        return itemsCollection;
-    }
-
-    public void setItemsCollection(Collection<Items> itemsCollection) {
-        this.itemsCollection = itemsCollection;
-    }
-
-    @XmlTransient
-    public Collection<Users> getUsersCollection() {
-        return usersCollection;
-    }
-
-    public void setUsersCollection(Collection<Users> usersCollection) {
-        this.usersCollection = usersCollection;
     }
 
     @Override

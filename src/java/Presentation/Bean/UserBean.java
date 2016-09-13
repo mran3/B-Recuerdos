@@ -26,7 +26,7 @@ public class UserBean implements Serializable {
     private String email;
     private String password;
     private Integer role;
-    private String message;
+    private String message = "";
     
     public Integer getId() {
         return id;
