@@ -5,7 +5,7 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Bank :: Delete User</title>
+        <title>Bank :: Consult User</title>
         <meta name="author" content="The Author"></meta>
         <style type="text/css">
             .form-jumbotron {
@@ -30,30 +30,33 @@
                 </b:dropMenu>
             </b:navbarLinks>
             <h:form styleClass="navbar-form navbar-right">
-                <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
+                <b:commandButton value="Sign In" look="primary" icon="log-in" iconAlign="left"/>
             </h:form>
         </b:navBar>
         <b:container>
             <h:form>
                 <b:jumbotron styleClass="form-jumbotron">
-                    <h1>Delete Item</h1>
+                    <h1>Please Sign In</h1>
                 </b:jumbotron>    
             </h:form>
         </b:container>
         <b:container>
             <b:row>
                 <b:column col-md="6" offset="3">
-                    <b:panel title="Delete User" look="danger">
+                    <b:panel title="Login" look="info">
                         <h:form styleClass="form-panel">
-                            <b:inputText id="document" placeholder="Document" value="#{itemBean.id}" required="true" requiredMessage="The document is required!">
+                            <b:inputText id="userName" placeholder="Username" value="#{userBean.userName}" required="true" requiredMessage="The user name is required!">
                                 <f:facet name="prepend">
-                                    <b:icon name="pencil" />
+                                    <b:icon name="user" />
                                 </f:facet>
                             </b:inputText>
-                            <b:message for="@previous" />
-                            <b:commandButton action="#{itemBean.deleteItem()}" value="Delete" look="danger" icon="remove" iconAlign="left"/>
+                            <b:inputSecret id="password" placeholder="Password" value="#{userBean.password}" required="true" requiredMessage="The password is required!">
+                                <f:facet name="prepend">
+                                    <b:icon name="ok" />
+                                </f:facet>
+                            </b:inputSecret>
+                            <b:commandButton action="#{userBean.loginUser()}" value="Sign In" look="primary" icon="log-in" iconAlign="left"/>
                         </h:form>
-                        <b:alert severity="danger" title="Message" closable="true">#{itemBean.message}</b:alert>
                     </b:panel>
                 </b:column>
             </b:row>
@@ -64,4 +67,5 @@
         </b:container>
     </h:body>
 </html>
+
 

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+<navigation-rule>
+        <navigation-case>
+            <from-outcome>createUser</from-outcome>
+            <to-view-id>/Users/createUser.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultUser</from-outcome>
+            <to-view-id>/Users/consultUser.xhtml</to-view-id>
+        </navigation-case>
+       <navigation-case>
+            <from-outcome>deleteUser</from-outcome>
+            <to-view-id>/Users/deleteUser.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>updateUser</from-outcome>
+            <to-view-id>/Users/updateUser.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>users</from-outcome>
+            <to-view-id>/Users/users.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createItem</from-outcome>
+            <to-view-id>/Items/createItem.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>deleteItem</from-outcome>
+            <to-view-id>/Items/deleteItem.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>updateItem</from-outcome>
+            <to-view-id>/Items/updateItem.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultItem</from-outcome>
+            <to-view-id>/Items/consultItem.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>itesms</from-outcome>
+            <to-view-id>/Items/items.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
