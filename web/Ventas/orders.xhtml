@@ -6,20 +6,12 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Recuerdos :: Items</title>
+        <title>Recuerdos :: Orders</title>
         <meta name="author" content="The Author"></meta>
     </h:head>
     <h:body style="padding-top: 50px; padding-bottom: 20px;">
         <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
-            <b:navbarLinks>
-                <b:dropMenu value="Items">
-                    <b:navLink value="Create Item" outcome="createItem"></b:navLink>
-                    <b:navLink value="Consult Item" outcome="consultItem"></b:navLink>
-                    <b:navLink value="Update Item" outcome="updateItem"></b:navLink>
-                    <b:navLink value="Delete Item" outcome="deleteItem"></b:navLink>
-                    <b:navLink value="Login Item" outcome="loginItem"></b:navLink>
-                </b:dropMenu>
-            </b:navbarLinks>
+            
             <h:form styleClass="navbar-form navbar-right">
                 <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
             </h:form>
@@ -28,7 +20,7 @@
             <h:form>
                 <b:jumbotron>
                     <b:icon name="glyphicon glyphicon-user" size="4x"/>
-                    <h1>Items</h1>
+                    <h1>Orders</h1>
                 </b:jumbotron>
             </h:form>
         </b:container>
@@ -38,27 +30,21 @@
                 <h:form>
                     <b:row>
                         <b:column col-md="3">
-                            <b:panel title="Create Item" look="success">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
-                                <b:button outcome="createItem" look="primary" value="Go" icon="plus"/>
+                            <b:panel title="Vender Productos" look="success">
+                                <p>Aqui se encuentra la funcionalidad del Cliente que le permite comprar productos</p>
+                                <b:button outcome="sales" look="primary" value="Go" icon="plus"/>
                             </b:panel>
                         </b:column>
                         <b:column col-md="3">
-                            <b:panel title="Consult Item" look="info">
+                            <b:panel title="Consult Order" look="info">
                                 <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
-                                <b:button outcome="consultItem" look="primary" value="Go" icon="search"/>
+                                <b:button outcome="consultOrder" look="primary" value="Go" icon="search"/>
                             </b:panel>
                         </b:column>
                         <b:column col-md="3">
-                            <b:panel title="Update Item" look="warning">
+                            <b:panel title="Delete Order" look="danger">
                                 <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
-                                <b:button outcome="updateItem" look="primary" value="Go" icon="ok"/>
-                            </b:panel>
-                        </b:column>
-                        <b:column col-md="3">
-                            <b:panel title="Delete Item" look="danger">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
-                                <b:button outcome="deleteItem" look="primary" value="Go" icon="remove"/>
+                                <b:button outcome="deleteOrder" look="primary" value="Go" icon="remove"/>
                             </b:panel>
                         </b:column>
                     </b:row>
