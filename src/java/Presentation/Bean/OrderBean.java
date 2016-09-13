@@ -5,6 +5,8 @@
  */
 package Presentation.Bean;
 
+import BusinessLogic.Controller.OrderController;
+import DataAccess.Entity.Order;
 import DataAccess.Entity.Solditems;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,8 +29,9 @@ public class OrderBean {
     private Long totalPrice;
     private Integer userId;
     private Collection<Solditems> solditemsCollection;
-    
+
     private String message;
+    private ArrayList<Order> list;
 
     public Integer getQuanty() {
         return quanty;
@@ -48,8 +51,10 @@ public class OrderBean {
     }
 
     public void addToCart(Integer id, Integer quanty, Long price) {
-        getSolditemsCollection().add(new Solditems(quanty, id));
-        setTotalPrice(getTotalPrice()+ price) ;
+        if (!findSolditemsAndUdate(id, 1)) {
+            getSolditemsCollection().add(new Solditems(1, id));
+        }
+        setTotalPrice(getTotalPrice() + price);
     }
 
     public Integer getId() {
@@ -72,14 +77,16 @@ public class OrderBean {
     }
 
     public Long getTotalPrice() {
-        if(totalPrice == null)
+        if (totalPrice == null) {
             totalPrice = Long.valueOf("0");
+        }
         return totalPrice;
     }
 
     public void setTotalPrice(Long totalPrice) {
-        if(totalPrice == null)
+        if (totalPrice == null) {
             totalPrice = Long.valueOf("0");
+        }
         this.totalPrice = totalPrice;
     }
 
@@ -100,6 +107,57 @@ public class OrderBean {
 
     public void setSolditemsCollection(Collection<Solditems> solditemsCollection) {
         this.solditemsCollection = solditemsCollection;
+    }
+
+    private boolean findSolditemsAndUdate(Integer id, Integer quanty) {
+        for (Solditems solditems : solditemsCollection) {
+            if (solditems.getItems().equals(id)) {
+                solditems.setQuantity(solditems.getQuantity() + quanty);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void createOrder() {
+
+        message = OrderController.createOrder(new Order(id, date, totalPrice, userId, solditemsCollection));
+    }
+
+    public void consultOrder() {
+
+        ArrayList<Order> temp = OrderController.consultOrder(id);
+        if (temp == null) {
+            message = "Not item with id " + id;
+        } else {
+            extractForEntity(temp.get(0));
+        }
+    }
+    
+    public void consultorderAll() {
+        ArrayList<Order> temp = OrderController.consultOrderAll();
+        if (temp == null) {
+            list = new ArrayList<Order>();
+            list.add(new Order(99, new Date(), new Long("99"), 0, getSolditemsCollection()));
+            message = "Not item with id " + id;
+            
+        } else {
+            list = temp;
+        }
+
+    }
+
+      public void deleteOrder() {
+        message = OrderController.deleteOrder(new Order(id, date, totalPrice, userId, solditemsCollection));
+    }
+
+    private void extractForEntity(Order order) {
+        id = order.getId();
+        date = order.getDate();
+        userId = order.getUserId();
+        totalPrice = order.getTotalPrice();
+        solditemsCollection = getSolditemsCollection();
+
     }
 
 }

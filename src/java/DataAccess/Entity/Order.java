@@ -57,6 +57,14 @@ public class Order implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
     private Collection<Solditems> solditemsCollection;
 
+    public Order(Integer id, Date date, Long totalPrice, Integer userId, Collection<Solditems> solditemsCollection) {
+        this.id = id;
+        this.date = date;
+        this.totalPrice = totalPrice;
+        this.userId = userId;
+        this.solditemsCollection = solditemsCollection;
+    }
+
     public Order() {
     }
 
