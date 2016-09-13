@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/fasto/NetBeansProjects/proyecto/B-Recuerdos/src/java/BusinessLogic/Controller/UserController.java</file>
-            <file>file:/home/fasto/NetBeansProjects/proyecto/B-Recuerdos/web/index.xhtml</file>
-            <file>file:/home/fasto/NetBeansProjects/proyecto/B-Recuerdos/src/java/Presentation/Bean/UserBean.java</file>
-            <file>file:/home/fasto/NetBeansProjects/proyecto/B-Recuerdos/web/Users/createUser.xhtml</file>
-            <file>file:/home/fasto/NetBeansProjects/proyecto/B-Recuerdos/src/java/DataAccess/Entity/Users.java</file>
+            <file>file:/C:/Users/Andréslee/Documents/NetBeansProjects/Bank/web/index.xhtml</file>
+            <file>file:/C:/Users/Andréslee/Documents/NetBeansProjects/Bank/src/java/DataAccess/Entity/User.java</file>
+            <file>file:/C:/Users/Andréslee/Documents/NetBeansProjects/Bank/src/java/BusinessLogic/Controller/UserController.java</file>
+            <file>file:/C:/Users/Andréslee/Documents/NetBeansProjects/Bank/web/Users/consultUser.xhtml</file>
+            <file>file:/C:/Users/Andréslee/Documents/NetBeansProjects/Bank/web/Users/loginUser.xhtml</file>
+            <file>file:/C:/Users/Andréslee/Documents/NetBeansProjects/Bank/src/java/DataAccess/DAO/UserDAO.java</file>
+            <file>file:/C:/Users/Andréslee/Documents/NetBeansProjects/Bank/web/Users/users.xhtml</file>
+            <file>file:/C:/Users/Andréslee/Documents/NetBeansProjects/Bank/src/java/Presentation/Bean/UserBean.java</file>
         </group>
     </open-files>
 </project-private>

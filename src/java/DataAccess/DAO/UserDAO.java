@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -47,11 +48,11 @@ public class UserDAO {
         return user;
     }
     
-    public Users loginUser(String userName) {
+    public Users loginUser(String email) {
         EntityManager em = emf.createEntityManager();
         Users user = null;
         Query q = em.createNamedQuery("User.findByUserName");
-        q.setParameter("userName", userName);
+        q.setParameter("userName", email);
         try {
             user = (Users) q.getSingleResult();
         } catch (Exception e) {

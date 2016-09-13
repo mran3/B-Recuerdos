@@ -7,13 +7,14 @@ package BusinessLogic.Controller;
 
 import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.Users;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author fasto
  */
 public class UserController {
-    
+    public static final String USER_SESSION_KEY = "users";
     public String createUser(Integer id,
                             String email,
                              String password,
@@ -55,15 +56,18 @@ public class UserController {
         }        
     }
     
-    public Users loginUser(String userName) {
-        
+    public String loginUser(String email, String password) {
+        FacesContext context = FacesContext.getCurrentInstance();
         UserDAO userDAO = new UserDAO();
-        Users userLogin = userDAO.loginUser(userName);
-        
+        Users userLogin = userDAO.loginUser(email);
         if (userLogin != null) {
-            return userLogin;
-        } else {
-            return null;
+            if (!userLogin.getPassword().equals(password)) {
+                return "err2";
+            }
+            context.getExternalContext().getSessionMap().put(USER_SESSION_KEY, userLogin);
+            return "main-admin";
+        } else {           
+            return "err1";
         }        
     }
     

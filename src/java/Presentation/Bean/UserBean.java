@@ -7,8 +7,10 @@ package Presentation.Bean;
 
 import BusinessLogic.Controller.UserController;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -75,9 +77,25 @@ public class UserBean implements Serializable {
         */
     }
     
-    public void loginUser() {
-        UserController userController = new UserController();
-    //    userName = userController.loginUser(userName).getUserName();
+    public String loginUser() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        UserController loginUsers = new UserController();
+        String response = loginUsers.loginUser(email, password);
+        if (response.equals("err1")){
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Fall� el Login!",
+                    "El usuario no existe.");
+            context.addMessage(null, message);
+            return null;
+        } else if (response.equals("err2")) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Fall� el Login!",
+                    "El password no es correcto.");
+            context.addMessage(null, message);
+            return null;
+        } else {
+            return response;
+        }
     }
     
     public void updateUser() {
