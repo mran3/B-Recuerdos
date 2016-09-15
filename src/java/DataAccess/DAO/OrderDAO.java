@@ -44,134 +44,6 @@ public class OrderDAO {
         }
     }
 
-    public String createItem(Item item) {
-        try {
-            if (connectDB()) {
-                BasicDBObject doc = new BasicDBObject("id_item", item.getId()).
-                        append("name", item.getName()).
-                        append("description", item.getDescription()).
-                        append("price", item.getPrice().longValue()).
-                        append("stock", item.getStock()).
-                        append("shop_id", item.getShopid());
-
-                coll.insert(doc);
-                System.out.println("Document (ITEM) inserted successfully");
-                return "Save Item " + item.getId() + " sucess";
-            } else {
-                return "Fail";
-            }
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            return "Fail";
-        }
-    }
-
-    public ArrayList<Item> consultItemAll() {
-        ArrayList<Item> accountConsult = new ArrayList<Item>();
-        try {
-            if (connectDB()) {
-                DBCursor cursor = coll.find();
-                while (cursor.hasNext()) {
-                    DBObject consultDocument = cursor.next();
-                    Item item = new Item();
-
-                    item.setId((int) consultDocument.get("id_item"));
-                    item.setName((String) consultDocument.get("name"));
-                    item.setDescription((String) consultDocument.get("description"));
-                    item.setPrice(BigInteger.valueOf((long) consultDocument.get("price")));
-                    item.setStock((int) consultDocument.get("stock"));
-                    item.setShopid((int) consultDocument.get("shop_id"));
-
-                    accountConsult.add(item);
-
-                }
-                System.out.println("Document (Items) consulted successfully");
-                return accountConsult;
-            } else {
-                return accountConsult;
-            }
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            return accountConsult;
-        }
-    }
-
-    public ArrayList<Item> consultItem(Integer id) {
-        ArrayList<Item> accountConsult = new ArrayList();
-        try {
-            if (connectDB()) {
-                BasicDBObject whereQuery = new BasicDBObject();
-                // Sentence to search one account number
-                whereQuery.put("id_item", id);
-                DBCursor cursor = coll.find(whereQuery);
-                while (cursor.hasNext()) {
-                    DBObject consultDocument = cursor.next();
-                    Item item = new Item();
-
-                    item.setId((int) consultDocument.get("id_item"));
-                    item.setName((String) consultDocument.get("name"));
-                    item.setDescription((String) consultDocument.get("description"));
-                    item.setPrice(BigInteger.valueOf((long) consultDocument.get("price")));
-                    item.setStock((int) consultDocument.get("stock"));
-                    item.setShopid((int) consultDocument.get("shop_id"));
-
-                    accountConsult.add(item);
-                }
-                System.out.println("Document (Items) consulted successfully");
-                return accountConsult;
-            } else {
-                return accountConsult;
-            }
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            return accountConsult;
-        }
-    }
-
-    public String updateItem(Item item) {
-        try {
-            if (connectDB()) {
-                BasicDBObject whereQuery = new BasicDBObject();
-                whereQuery.put("id_item", item.getId());
-                DBCursor cursor = coll.find(whereQuery);
-                while (cursor.hasNext()) {
-                    DBObject updateDocument = cursor.next();
-                    updateDocument.put("name", item.getName());
-                    updateDocument.put("description", item.getDescription());
-                    updateDocument.put("price", item.getPrice().longValue());
-                    updateDocument.put("stock", item.getStock());
-                    updateDocument.put("shop_id", item.getShopid());
-                    coll.update(whereQuery, updateDocument);
-                }
-                System.out.println("Document updated (Item) successfully");
-                return "Success, Item " + item.getId() + " updated ";
-            } else {
-                return "Fail";
-            }
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            return "Fail";
-        }
-    }
-
-    public String deleteItem(Item item) {
-        try {
-            if (connectDB()) {
-                BasicDBObject whereQuery = new BasicDBObject();
-                whereQuery.put("id_item", item.getId());
-                DBCursor cursor = coll.find(whereQuery);
-                coll.remove(whereQuery);
-                System.out.println("Document deleted successfully");
-                return "Success, Item " + item.getId() + " deleted";
-            } else {
-                return "Fail";
-            }
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            return "Fail";
-        }
-    }
-
     public String createOrder(Order order) {
         try {
             if (connectDB()) {
@@ -247,18 +119,21 @@ public class OrderDAO {
                     Order order = new Order();
 
                     order.setId((int) consultDocument.get("id_order"));
-                    order.setDate((Date) consultDocument.get("date"));
-                    order.setTotalPrice((Long) consultDocument.get("total_price"));
-                    order.setUserId((Integer) consultDocument.get("user_id"));
-                    BasicDBList soleditemsBDL = (BasicDBList) consultDocument.get("solditems");
-                    Collection<Solditems> soleditemslist = new ArrayList<Solditems>();
-                    for (Object solditemBDO : soleditemsBDL) {
-                        DBObject temp = (DBObject) solditemBDO;
-                        Solditems si = new Solditems((Integer) temp.get("quantity"), (Integer) temp.get("id_item"));
-                        soleditemslist.add(si);
+
+                    if (order.getId().equals(id)) {
+                        order.setDate((Date) consultDocument.get("date"));
+                        order.setTotalPrice((Long) consultDocument.get("total_price"));
+                        order.setUserId((Integer) consultDocument.get("user_id"));
+                        BasicDBList soleditemsBDL = (BasicDBList) consultDocument.get("solditems");
+                        Collection<Solditems> soleditemslist = new ArrayList<Solditems>();
+                        for (Object solditemBDO : soleditemsBDL) {
+                            DBObject temp = (BasicDBObject) solditemBDO;
+                            Solditems si = new Solditems((Integer) temp.get("quantity"), (Integer) temp.get("id_item"));
+                            soleditemslist.add(si);
+                        }
+                        order.setSolditemsCollection(soleditemslist);
+                        consult.add(order);
                     }
-                    order.setSolditemsCollection(soleditemslist);
-                    consult.add(order);
 
                 }
                 System.out.println("Document (Items) consulted successfully");

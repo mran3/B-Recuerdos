@@ -15,3 +15,5 @@ nbproject\*
 build\*
 
 /dist/
+build/*
+build/web/*

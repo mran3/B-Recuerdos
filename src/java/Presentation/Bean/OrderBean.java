@@ -156,7 +156,7 @@ public class OrderBean {
         date = order.getDate();
         userId = order.getUserId();
         totalPrice = order.getTotalPrice();
-        solditemsCollection = getSolditemsCollection();
+        solditemsCollection = order.getSolditemsCollection();
 
     }
 
