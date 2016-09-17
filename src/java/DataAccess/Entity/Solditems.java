@@ -6,9 +6,6 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 /**
  *
@@ -17,10 +14,7 @@ import javax.persistence.ManyToOne;
 public class Solditems implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Column(name = "quantity")
     private Integer quantity;
-    @JoinColumn(name = "item_id", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
     private Integer item;
     
     public Solditems() {

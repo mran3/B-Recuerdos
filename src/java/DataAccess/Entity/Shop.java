@@ -55,6 +55,8 @@ public class Shop implements Serializable {
     @Column(name = "url")
     private String url;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "shopid")
+    private Collection<Employee> employeesCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shopid")
     private Collection<Item> itemsCollection;
 
     public Shop() {
@@ -104,6 +106,14 @@ public class Shop implements Serializable {
         this.url = url;
     }
 
+    @XmlTransient
+    public Collection<Employee> getEmployeesCollection() {
+        return employeesCollection;
+    }
+
+    public void setEmployeesCollection(Collection<Employee> employeesCollection) {
+        this.employeesCollection = employeesCollection;
+    }
 
     @XmlTransient
     public Collection<Item> getItemsCollection() {
