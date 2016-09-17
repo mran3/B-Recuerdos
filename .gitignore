@@ -4,7 +4,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
@@ -20,3 +19,4 @@ build/web/WEB-INF/classes/META-INF/persistence.xml
 *.res
 /nbproject/private/
 /nbproject/
+/build.xml
