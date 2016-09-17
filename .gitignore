@@ -13,7 +13,8 @@ hs_err_pid*
 \dist\*
 nbproject\*
 build\*
-
 /dist/
 build/*
-build/web/*
+
+build/web/WEB-INF/classes/META-INF/persistence.xml
+*.res

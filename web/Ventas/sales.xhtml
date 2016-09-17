@@ -44,13 +44,6 @@
                             <h5>Stock: #{item.stock}</h5><br/>
 
                             <h:form>
-                                <b:inputText id="Quanty_#{status.index}" placeholder="Quanty" value="#{orderBean.quanty}">
-                                    <f:facet name="prepend">
-                                        <b:icon name="pencil" />
-                                    </f:facet>
-                                </b:inputText>
-                                    
-
                                 <b:commandButton action="#{orderBean.addToCart(item.id, orderBean.quanty , item.price)}" value="Buy" look="success" icon="plus" iconAlign="left"/>
                             </h:form>  
                         </b:panel>

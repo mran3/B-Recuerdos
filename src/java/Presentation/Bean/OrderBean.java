@@ -5,7 +5,9 @@
  */
 package Presentation.Bean;
 
+import BusinessLogic.Controller.ItemController;
 import BusinessLogic.Controller.OrderController;
+import DataAccess.Entity.Item;
 import DataAccess.Entity.Order;
 import DataAccess.Entity.Solditems;
 import java.util.ArrayList;
@@ -120,8 +122,12 @@ public class OrderBean {
     }
 
     public void createOrder() {
+        message = disminuirStock();
+        if (!message.equals("Fail")) {
+            message = OrderController.createOrder(new Order(id, date, totalPrice, userId, solditemsCollection));
 
-        message = OrderController.createOrder(new Order(id, date, totalPrice, userId, solditemsCollection));
+        }
+//
     }
 
     public void consultOrder() {
@@ -133,21 +139,21 @@ public class OrderBean {
             extractForEntity(temp.get(0));
         }
     }
-    
+
     public void consultorderAll() {
         ArrayList<Order> temp = OrderController.consultOrderAll();
         if (temp == null) {
             list = new ArrayList<Order>();
             list.add(new Order(99, new Date(), new Long("99"), 0, getSolditemsCollection()));
             message = "Not item with id " + id;
-            
+
         } else {
             list = temp;
         }
 
     }
 
-      public void deleteOrder() {
+    public void deleteOrder() {
         message = OrderController.deleteOrder(new Order(id, date, totalPrice, userId, solditemsCollection));
     }
 
@@ -158,6 +164,27 @@ public class OrderBean {
         totalPrice = order.getTotalPrice();
         solditemsCollection = order.getSolditemsCollection();
 
+    }
+
+    private String disminuirStock() {
+        String s = "Sucess";
+        for (Solditems solditems : solditemsCollection) {
+
+            ArrayList<Item> consult = ItemController.consultItem(solditems.getItems());
+            if (consult != null) {
+                Item item = consult.get(0);
+                int result = item.getStock() - solditems.getQuantity();
+                if (result < 0) {
+                    return "Fail";
+                }
+                item.setStock(result);
+                s = ItemController.updateItem(item);
+
+            } else {
+                return "Fail";
+            }
+        }
+        return s;
     }
 
 }

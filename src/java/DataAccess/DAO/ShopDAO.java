@@ -29,7 +29,7 @@ public class ShopDAO {
             // Now connect to your databases
             DB db = mongoClient.getDB("recuerdos");
             System.out.println("Connect to database successfully");
-            coll = db.getCollection("items");
+            coll = db.getCollection("shops");
             System.out.println("Collection account selected successfully");
             return true;
         } catch (Exception e) {
