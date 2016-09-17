@@ -1,39 +1,24 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui">
-    <h:head>
-        <title>Recuerdos El Dorado</title>
-        <meta name="author" content="Grupo B"></meta>
-        <link rel="stylesheet" href="styles.css"/>
-    </h:head>
-    <h:body style="padding-top: 50px; padding-bottom: 20px;">
-        <img src="img/logo.png" />
-        <b:navBar  inverse="true" fixed="top">
-            <img id="logo" src="img/logo3.png" />
-            <b:navbarLinks>
-                <b:dropMenu value="Users">
-                    <b:navLink value="Create User" outcome="Users/createUser"></b:navLink>
-                    <b:navLink value="Consult User" outcome="Users/consultUser"></b:navLink>
-                    <b:navLink value="Update User" outcome="Users/updateUser"></b:navLink>
-                    <b:navLink value="Delete User" outcome="Users/deleteUser"></b:navLink>
-                </b:dropMenu>
-            </b:navbarLinks>
-            <h:form styleClass="navbar-form navbar-right auth-buttons">
-                <b:button outcome="Users/loginUser" value="Ingresa" look="primary" icon="log-in" iconAlign="left"/>
-                <b:button outcome="Users/createUser" value="Registrate" look="primary" icon="star-empty" iconAlign="left"/>
-            </h:form>
-        </b:navBar>
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui">>
+
+    <ui:define name="title">
+        New page title here
+    </ui:define>
+
+    <ui:define name="content">
         <b:jumbotron class="hero">
-<!--            <b:container>
-                <h1>Bienvenido a Recuerdos Planetarios!</h1>
-                <img src="img/planet.png" />
-                <p>This is an application example for the course "Software Architecture 2016-II".</p>
-                <p>
-                    <a href="https://sites.google.com/a/unal.edu.co/software-architecture-2016-ii/" class="btn btn-lg btn-info">View Course »</a>
-                </p>
-            </b:container>-->
+            <!--            <b:container>
+                            <h1>Bienvenido a Recuerdos Planetarios!</h1>
+                            <img src="img/planet.png" />
+                            <p>This is an application example for the course "Software Architecture 2016-II".</p>
+                            <p>
+                                <a href="https://sites.google.com/a/unal.edu.co/software-architecture-2016-ii/" class="btn btn-lg btn-info">View Course »</a>
+                            </p>
+                        </b:container>-->
         </b:jumbotron>
         <b:container>
             <h:form>
@@ -47,39 +32,24 @@
                         </b:panel>
                     </b:column>
                     <b:column col-md="4">
-                        <b:panel title="Items" look="success">
+                        <b:panel title="Accounts" look="success">
                             <b:icon name="glyphicon glyphicon-piggy-bank" size="2x"/>
-                            <h2>Items</h2>
-                            <p>itemes o recuerdos que estarán disponibles en la tienda.</p>
-                            <p><b:button outcome="Items/items" value="Go" look="success"/></p>
+                            <h2>Accounts</h2>
+                            <p>Module description. Module description. Module description. Module description.</p>
+                            <p><b:button outcome="" value="Go" look="success"/></p>
                         </b:panel>
                     </b:column>
                     <b:column col-md="4">
-                        <b:panel title="Ventas" look="success">
+                        <b:panel title="Transactions" look="success">
                             <b:icon name="glyphicon glyphicon-euro" size="2x"/>
-                            <h2>Ventas</h2>
-                            <p>Permite realizar compras y observar las ordenes ligadas a esas compras</p>
-                            <p><b:button outcome="Ventas/orders" value="Go" look="success"/></p>
+                            <h2>Transactions</h2>
+                            <p>Module description. Module description. Module description. Module description.</p>
+                            <p><b:button outcome="" value="Go" look="success"/></p>
                         </b:panel>
                     </b:column>
-                    
-                    
-                    <b:column col-md="4">
-                        <b:panel title="Tiendas" look="success">
-                            <b:icon name="glyphicon glyphicon-piggy-bank" size="2x"/>
-                            <h2>Shops</h2>
-                            <p>Manage shops using mongoDB to allocate the records </p>
-                            <p><b:button outcome="Shop/shop" value="Go" look="success"/></p>
-                        </b:panel>
-                    </b:column>
-                    
-
                 </b:row>
             </h:form>
             <hr/>
-            <footer>
-                <p>Universidad Nacional de Colombia © 2016</p>
-            </footer>
-        </b:container>
-    </h:body>
-</html>
+            </b:container>
+    </ui:define>
+</ui:composition>
