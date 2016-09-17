@@ -45,15 +45,15 @@
                 <b:column col-md="6" offset="3">
                     <b:panel title="Delete User" look="danger">
                         <h:form styleClass="form-panel">
-                            <b:inputText id="document" placeholder="Document" value="#{itemBean.id}" required="true" requiredMessage="The document is required!">
+                            <b:inputText id="ID" placeholder="ID" value="#{orderBean.id}" required="true" requiredMessage="The document is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
                             <b:message for="@previous" />
-                            <b:commandButton action="#{itemBean.deleteItem()}" value="Delete" look="danger" icon="remove" iconAlign="left"/>
+                            <b:commandButton action="#{orderBean.deleteOrder()}" value="Delete" look="danger" icon="remove" iconAlign="left"/>
                         </h:form>
-                        <b:alert severity="danger" title="Message" closable="true">#{itemBean.message}</b:alert>
+                        <b:alert severity="danger" title="Message" closable="true">#{orderBean.message}</b:alert>
                     </b:panel>
                 </b:column>
             </b:row>

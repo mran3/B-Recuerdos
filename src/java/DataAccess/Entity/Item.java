@@ -7,59 +7,37 @@ package DataAccess.Entity;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Collection;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author fasto
+ * @author JuanC Sexy
  */
-@Entity
-@Table(name = "Items")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Items.findAll", query = "SELECT i FROM Items i"),
-    @NamedQuery(name = "Items.findById", query = "SELECT i FROM Items i WHERE i.id = :id"),
-    @NamedQuery(name = "Items.findByName", query = "SELECT i FROM Items i WHERE i.name = :name"),
-    @NamedQuery(name = "Items.findByPrice", query = "SELECT i FROM Items i WHERE i.price = :price"),
-    @NamedQuery(name = "Items.findByStock", query = "SELECT i FROM Items i WHERE i.stock = :stock"),
-    @NamedQuery(name = "Items.findByShopId", query = "SELECT i FROM Items i WHERE i.shopId = :shopId")})
-public class Items implements Serializable {
+public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
     private Integer id;
-    @Size(max = 255)
-    @Column(name = "name")
     private String name;
-    @Lob
-    @Size(max = 65535)
-    @Column(name = "description")
     private String description;
-    @Column(name = "price")
     private BigInteger price;
-    @Column(name = "stock")
     private Integer stock;
-    @Column(name = "shop_id")
-    private Integer shopId;
+    private Integer shopid;
+    private Collection<Solditems> solditemsCollection;
 
-    public Items() {
+    public Item(Integer id, String name, String description, BigInteger price, Integer stock, Integer shopid) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stock = stock;
+        this.shopid = shopid;
     }
 
-    public Items(Integer id) {
+    public Item() {
+    }
+
+    public Item(Integer id) {
         this.id = id;
     }
 
@@ -103,12 +81,21 @@ public class Items implements Serializable {
         this.stock = stock;
     }
 
-    public Integer getShopId() {
-        return shopId;
+    public int getShopid() {
+        return shopid;
     }
 
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
+    public void setShopid(int shopid) {
+        this.shopid = shopid;
+    }
+
+    @XmlTransient
+    public Collection<Solditems> getSolditemsCollection() {
+        return solditemsCollection;
+    }
+
+    public void setSolditemsCollection(Collection<Solditems> solditemsCollection) {
+        this.solditemsCollection = solditemsCollection;
     }
 
     @Override
@@ -121,10 +108,10 @@ public class Items implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Items)) {
+        if (!(object instanceof Item)) {
             return false;
         }
-        Items other = (Items) object;
+        Item other = (Item) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

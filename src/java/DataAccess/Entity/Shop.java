@@ -6,56 +6,26 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Collection;
 
 /**
  *
- * @author fasto
+ * @author JuanC Sexy
  */
-@Entity
-@Table(name = "Shops")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Shops.findAll", query = "SELECT s FROM Shops s"),
-    @NamedQuery(name = "Shops.findById", query = "SELECT s FROM Shops s WHERE s.id = :id"),
-    @NamedQuery(name = "Shops.findByManagerId", query = "SELECT s FROM Shops s WHERE s.managerId = :managerId"),
-    @NamedQuery(name = "Shops.findByName", query = "SELECT s FROM Shops s WHERE s.name = :name"),
-    @NamedQuery(name = "Shops.findByAddress", query = "SELECT s FROM Shops s WHERE s.address = :address"),
-    @NamedQuery(name = "Shops.findByUrl", query = "SELECT s FROM Shops s WHERE s.url = :url")})
-public class Shops implements Serializable {
+public class Shop implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
     private Integer id;
-    @Column(name = "manager_id")
     private Integer managerId;
-    @Size(max = 255)
-    @Column(name = "name")
     private String name;
-    @Size(max = 255)
-    @Column(name = "address")
     private String address;
-    @Size(max = 255)
-    @Column(name = "url")
     private String url;
+    private Collection<Item> itemsCollection;
 
-    public Shops() {
+    public Shop() {
     }
 
-    public Shops(Integer id) {
+    public Shop(Integer id) {
         this.id = id;
     }
 
@@ -98,6 +68,13 @@ public class Shops implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+    public Collection<Item> getItemsCollection() {
+        return itemsCollection;
+    }
+
+    public void setItemsCollection(Collection<Item> itemsCollection) {
+        this.itemsCollection = itemsCollection;
+    }
 
     @Override
     public int hashCode() {
@@ -109,10 +86,10 @@ public class Shops implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Shops)) {
+        if (!(object instanceof Shop)) {
             return false;
         }
-        Shops other = (Shops) object;
+        Shop other = (Shop) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

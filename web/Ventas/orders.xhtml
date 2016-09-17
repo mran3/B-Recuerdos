@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Recuerdos :: Orders</title>
+        <meta name="author" content="The Author"></meta>
+    </h:head>
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+        <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
+            
+            <h:form styleClass="navbar-form navbar-right">
+                <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
+            </h:form>
+        </b:navBar>
+        <b:container>
+            <h:form>
+                <b:jumbotron>
+                    <b:icon name="glyphicon glyphicon-user" size="4x"/>
+                    <h1>Orders</h1>
+                </b:jumbotron>
+            </h:form>
+        </b:container>
+        
+        <b:container>
+            <b:panel>
+                <h:form>
+                    <b:row>
+                        <b:column col-md="3">
+                            <b:panel title="Vender Productos" look="success">
+                                <p>Aqui se encuentra la funcionalidad del Cliente que le permite comprar productos</p>
+                                <b:button outcome="sales" look="primary" value="Go" icon="plus"/>
+                            </b:panel>
+                        </b:column>
+                        <b:column col-md="3">
+                            <b:panel title="Consult Order" look="info">
+                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                                <b:button outcome="consultOrder" look="primary" value="Go" icon="search"/>
+                            </b:panel>
+                        </b:column>
+                        <b:column col-md="3">
+                            <b:panel title="Delete Order" look="danger">
+                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                                <b:button outcome="deleteOrder" look="primary" value="Go" icon="remove"/>
+                            </b:panel>
+                        </b:column>
+                    </b:row>
+                </h:form>
+                <hr/>
+                <footer>
+                    <p>Universidad Nacional de Colombia © 2016</p>
+                </footer>
+            </b:panel>
+        </b:container>
+    </h:body>
+</html>
+
+
+

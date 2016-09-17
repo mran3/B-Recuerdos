@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+        <h:head>
+        <title>Tienda :: Consultar Tienda</title>
+        <meta name="author" content="The Author"></meta>
+        <style type="text/css">
+            .form-jumbotron {
+                padding: 20px;
+                text-align: center;
+            }
+            .form-panel {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+        </style>
+    </h:head>
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+        <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
+            <b:navbarLinks>
+                <b:dropMenu value="Users">
+                     <b:navLink value="Create Shop" outcome="createShop"></b:navLink>
+                    <b:navLink value="Consult Shop" outcome="consultShop"></b:navLink>
+                    <b:navLink value="Update Shop" outcome="updateShop"></b:navLink>
+                    <b:navLink value="Delete Shop" outcome="deleteShop"></b:navLink>
+                </b:dropMenu>
+            </b:navbarLinks>
+            <h:form styleClass="navbar-form navbar-right">
+                <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
+            </h:form>
+        </b:navBar>
+        <b:container>
+            <h:form>
+                <b:jumbotron styleClass="form-jumbotron">
+                    <h1>Consult Shop</h1>
+                </b:jumbotron>    
+            </h:form>
+        </b:container>
+        <b:container>
+            <b:row>
+                <b:column col-md="6" offset="3">
+                    <b:panel title="Consult Shop" look="info">
+                        <h:form styleClass="form-panel">
+                            <b:inputText id="idShop" placeholder="Document" value="#{shopBean.idShop}" required="true" requiredMessage="La identificacion es necesaria">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:commandButton action="#{shopBean.consutShop()}" value="Consult" look="info" icon="search" iconAlign="left"/>
+                        </h:form>
+                        <h:form styleClass="form-panel">
+                            <b:inputText id="shopName" placeholder="Nombre de la Tienda" value="#{shopBean.shopName}" disabled="true">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:inputText id="idManager" placeholder="Identificacion del Administrador" value="#{shopBean.idManager}" disabled="true">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <b:inputText id="shopAddress" placeholder="Direccion de la Tienda" value="#{shopBean.shopAddress}" disabled="true">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                        </h:form>
+                    </b:panel>
+                </b:column>
+            </b:row>
+            <hr/>
+            <footer>
+                <p>Universidad Nacional de Colombia © 2016</p>
+            </footer>
+        </b:container>
+    </h:body>
+</html>
+

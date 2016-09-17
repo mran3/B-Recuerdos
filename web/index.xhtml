@@ -47,21 +47,33 @@
                         </b:panel>
                     </b:column>
                     <b:column col-md="4">
-                        <b:panel title="Accounts" look="success">
+                        <b:panel title="Items" look="success">
                             <b:icon name="glyphicon glyphicon-piggy-bank" size="2x"/>
-                            <h2>Accounts</h2>
-                            <p>Module description. Module description. Module description. Module description.</p>
-                            <p><b:button outcome="" value="Go" look="success"/></p>
+                            <h2>Items</h2>
+                            <p>itemes o recuerdos que estarán disponibles en la tienda.</p>
+                            <p><b:button outcome="Items/items" value="Go" look="success"/></p>
                         </b:panel>
                     </b:column>
                     <b:column col-md="4">
-                        <b:panel title="Transactions" look="success">
+                        <b:panel title="Ventas" look="success">
                             <b:icon name="glyphicon glyphicon-euro" size="2x"/>
-                            <h2>Transactions</h2>
-                            <p>Module description. Module description. Module description. Module description.</p>
-                            <p><b:button outcome="" value="Go" look="success"/></p>
+                            <h2>Ventas</h2>
+                            <p>Permite realizar compras y observar las ordenes ligadas a esas compras</p>
+                            <p><b:button outcome="Ventas/orders" value="Go" look="success"/></p>
                         </b:panel>
                     </b:column>
+                    
+                    
+                    <b:column col-md="4">
+                        <b:panel title="Tiendas" look="success">
+                            <b:icon name="glyphicon glyphicon-piggy-bank" size="2x"/>
+                            <h2>Shops</h2>
+                            <p>Manage shops using mongoDB to allocate the records </p>
+                            <p><b:button outcome="Shop/shop" value="Go" look="success"/></p>
+                        </b:panel>
+                    </b:column>
+                    
+
                 </b:row>
             </h:form>
             <hr/>
