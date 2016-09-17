@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">00
+    <h:head>
+        <title><ui:insert name="title">Default title</ui:insert></title>
+        <link rel="stylesheet" href="styles.css"/>
+    </h:head>
+    <h:body>
+        <div id="header">Header</div>
+        <div id="menu">
+            <b:navBar  inverse="true" fixed="top">
+                <img id="logo" src="img/logo3.png" />
+                <b:navbarLinks>
+                    <b:dropMenu value="Users">
+                        <b:navLink value="Create User" outcome="Users/createUser"></b:navLink>
+                        <b:navLink value="Consult User" outcome="Users/consultUser"></b:navLink>
+                        <b:navLink value="Update User" outcome="Users/updateUser"></b:navLink>
+                        <b:navLink value="Delete User" outcome="Users/deleteUser"></b:navLink>
+                    </b:dropMenu>
+                </b:navbarLinks>
+                <h:form styleClass="navbar-form navbar-right auth-buttons">
+                    <b:button outcome="Users/loginUser" value="Ingresa" look="primary" icon="log-in" iconAlign="left"/>
+                    <b:button outcome="Users/createUser" value="Registrate" look="primary" icon="star-empty" iconAlign="left"/>
+                </h:form>
+            </b:navBar>
+        </div>
+        <div id="content"><ui:insert name="content">Default content</ui:insert></div>
+        <div id="footer">
+            <footer>
+                <p>Universidad Nacional de Colombia © 2016</p>
+            </footer>
+        </div>
+    </h:body>
+</html>
