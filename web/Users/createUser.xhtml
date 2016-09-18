@@ -45,24 +45,19 @@
                 <b:column col-md="6" offset="3">
                     <b:panel title="Create User" look="success">
                         <h:form styleClass="form-panel"  >
-                            <b:inputText id="document" placeholder="Document" value="#{userBean.document}" required="true" requiredMessage="The document is required!">
+                            <b:inputText id="id" placeholder="id" value="#{userBean.id}" required="true" requiredMessage="The document is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
                             <b:message for="@previous" />
-                            <b:inputText id="firstName" placeholder="First name" value="#{userBean.firstName}" required="true" requiredMessage="The first name is required!">
+                            <b:inputText id="userName" placeholder="User name" value="#{userBean.userName}" required="true" requiredMessage="The first name is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
                             <b:message for="@previous" />
-                            <b:inputText id="lastName" placeholder="Last name" value="#{userBean.lastName}" required="true" requiredMessage="The last name is required!">
-                                <f:facet name="prepend">
-                                    <b:icon name="pencil" />
-                                </f:facet>
-                            </b:inputText>
-                            <b:inputText id="userName" placeholder="Username" value="#{userBean.userName}" required="true" requiredMessage="The username is required!">
+                            <b:inputText id="email" placeholder="email" value="#{userBean.email}" required="true" requiredMessage="The last name is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>

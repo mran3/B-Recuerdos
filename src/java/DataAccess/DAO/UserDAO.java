@@ -5,7 +5,7 @@
  */
 package DataAccess.DAO;
 
-import DataAccess.Entity.Users;
+import DataAccess.Entity.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -18,9 +18,9 @@ import javax.faces.context.FacesContext;
  */
 public class UserDAO {
     
-    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("pupuputa");
+    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("B-RecuerdosPU");
     
-    public Users createUser(Users user) {
+    public User createUser(User user) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
@@ -34,13 +34,13 @@ public class UserDAO {
         return user;
     }
     
-    public Users consultUser(Integer document) {
+    public User consultUser(Integer id) {
         EntityManager em = emf.createEntityManager();
-        Users user = null;
+        User user = null;
         Query q = em.createNamedQuery("User.findByDocument");
-        q.setParameter("document", document);
+        q.setParameter("document", id);
         try {
-            user = (Users) q.getSingleResult();
+            user = (User) q.getSingleResult();
         } catch (Exception e) {
         } finally {
             em.close();
@@ -48,13 +48,13 @@ public class UserDAO {
         return user;
     }
     
-    public Users loginUser(String email) {
+    public User loginUser(String userName) {
         EntityManager em = emf.createEntityManager();
-        Users user = null;
+        User user = null;
         Query q = em.createNamedQuery("User.findByUserName");
-        q.setParameter("userName", email);
+        q.setParameter("userName", userName);
         try {
-            user = (Users) q.getSingleResult();
+            user = (User) q.getSingleResult();
         } catch (Exception e) {
         } finally {
             em.close();
@@ -62,17 +62,17 @@ public class UserDAO {
         return user;
     }
     
-    public Users updateUser(Users userUpdated) {
+    public User updateUser(User userUpdated) {
         /* 
         EntityManager em = emf.createEntityManager();
-        //User user = em.find(User.class, userUpdated.getDocument());
+        //User user = em.find(User.class, userUpdated.getId());
         em.getTransaction().begin();
         try {
             
-            user.setDocument(userUpdated.getDocument());
-            user.setFirstName(userUpdated.getFirstName());
-            user.setLastName(userUpdated.getLastName());
+            user.setDocument(userUpdated.getId());
             user.setUserName(userUpdated.getUserName());
+            user.setEmail(userUpdated.getEmail());
+            user.setRole(userUpdated.getRole());
             user.setPassword(userUpdated.getPassword());
             em.merge(user);
             em.getTransaction().commit();
@@ -86,9 +86,9 @@ public class UserDAO {
         return null;
     }
     
-    public String deleteUser(Integer document) {
+    public String deleteUser(Integer id) {
         EntityManager em = emf.createEntityManager();
-        Users user = em.find(Users.class, document);
+        User user = em.find(User.class, id);
         em.getTransaction().begin();
         try {
             em.remove(user);

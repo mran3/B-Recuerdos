@@ -6,7 +6,7 @@
 package BusinessLogic.Controller;
 
 import DataAccess.DAO.UserDAO;
-import DataAccess.Entity.Users;
+import DataAccess.Entity.User;
 import javax.faces.context.FacesContext;
 
 /**
@@ -14,28 +14,24 @@ import javax.faces.context.FacesContext;
  * @author fasto
  */
 public class UserController {
-    public static final String USER_SESSION_KEY = "users";
+    public static final String USER_SESSION_KEY = "user";
     public String createUser(Integer id,
-                            String email,
+                             String userName,
+                             String email,
                              String password,
                              Integer role,
                              Integer shop_id) {
         
-        Users user = new Users();
+        User user = new User();
         user.setId(id);
+        user.setUserName(userName);
         user.setEmail(email);
         user.setPassword(password);
-        user.setRole(1);
-        user.setShopId(null);
-        /*
-        user.setDocument(document);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setUserName(userName);
-        user.setPassword(password);
-        */
+        user.setRole(role);
+        user.setShopId(shop_id);
+        
         UserDAO userDAO = new UserDAO();
-        Users userCreate = userDAO.createUser(user);
+        User userCreate = userDAO.createUser(user);
         
         if (userCreate != null) {
             return "El usuario fue creado";
@@ -44,10 +40,10 @@ public class UserController {
         }        
     } 
     
-    public Users consultUser(Integer document) {
+    public User consultUser(Integer id) {
         
         UserDAO userDAO = new UserDAO();
-        Users userConsult = userDAO.consultUser(document);
+        User userConsult = userDAO.consultUser(id);
         
         if (userConsult != null) {
             return userConsult;
@@ -56,10 +52,10 @@ public class UserController {
         }        
     }
     
-    public String loginUser(String email, String password) {
+    public String loginUser(String userName, String password) {
         FacesContext context = FacesContext.getCurrentInstance();
         UserDAO userDAO = new UserDAO();
-        Users userLogin = userDAO.loginUser(email);
+        User userLogin = userDAO.loginUser(userName);
         if (userLogin != null) {
             if (!userLogin.getPassword().equals(password)) {
                 return "err2";
@@ -71,21 +67,20 @@ public class UserController {
         }        
     }
     
-    public String updateUser(String email,
+    public String updateUser(String userName,
+                             String email,
                              String password,
                              Integer role,
                              Integer shop_id) {
         
-        Users user = new Users();
+        User user = new User();
         /*
-        user.setDocument(document);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
+        user.setId(id);
         user.setUserName(userName);
         user.setPassword(password);
         */
         UserDAO userDAO = new UserDAO();
-        Users userUpdate = userDAO.updateUser(user);
+        User userUpdate = userDAO.updateUser(user);
         
         if (userUpdate != null) {
             return "The user has been updated successfully!";
@@ -94,12 +89,12 @@ public class UserController {
         }        
     }
     
-    public String deleteUser(Integer document) {
+    public String deleteUser(Integer id) {
         
         UserDAO userDAO = new UserDAO();
-        String userDelete = userDAO.deleteUser(document);
+        String userDelete = userDAO.deleteUser(id);
         
-        if (userDelete == "Success") {
+        if (userDelete.equals("Success")) {
             return "The user has been deleted successfully!";
         } else {
             return "The user has not been deleted!";
