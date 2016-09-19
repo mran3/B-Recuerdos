@@ -2,29 +2,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Recuerdos El Dorado</title>
         <meta name="author" content="Grupo B"></meta>
         <link rel="stylesheet" href="styles.css"/>
     </h:head>
     <h:body style="padding-top: 50px; padding-bottom: 20px;">
-        <img src="img/logo.png" />
-        <b:navBar  inverse="true" fixed="top">
-            <img id="logo" src="img/logo3.png" />
-            <b:navbarLinks>
-                <b:dropMenu value="Users">
-                    <b:navLink value="Create User" outcome="Users/createUser"></b:navLink>
-                    <b:navLink value="Consult User" outcome="Users/consultUser"></b:navLink>
-                    <b:navLink value="Update User" outcome="Users/updateUser"></b:navLink>
-                    <b:navLink value="Delete User" outcome="Users/deleteUser"></b:navLink>
-                </b:dropMenu>
-            </b:navbarLinks>
-            <h:form styleClass="navbar-form navbar-right auth-buttons">
-                <b:button outcome="Users/loginUser" value="Ingresa" look="primary" icon="log-in" iconAlign="left"/>
-                <b:button outcome="Users/createUser" value="Registrate" look="primary" icon="star-empty" iconAlign="left"/>
-            </h:form>
-        </b:navBar>
+        <ui:include src="menu.xhtml"/>
         <b:jumbotron class="hero">
 <!--            <b:container>
                 <h1>Bienvenido a Recuerdos Planetarios!</h1>

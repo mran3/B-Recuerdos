@@ -3,10 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Bank :: Consult User</title>
         <meta name="author" content="The Author"></meta>
+        <link rel="stylesheet" href="../styles.css"/>
         <style type="text/css">
             .form-jumbotron {
                 padding: 20px;
@@ -20,23 +22,11 @@
         </style>
     </h:head>
     <h:body style="padding-top: 50px; padding-bottom: 20px;">
-        <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
-            <b:navbarLinks>
-                <b:dropMenu value="Users">
-                    <b:navLink value="Create User" outcome="createUser"></b:navLink>
-                    <b:navLink value="Consult User" outcome="consultUser"></b:navLink>
-                    <b:navLink value="Update User" outcome="updateUser"></b:navLink>
-                    <b:navLink value="Delete User" outcome="deleteUser"></b:navLink>
-                </b:dropMenu>
-            </b:navbarLinks>
-            <h:form styleClass="navbar-form navbar-right">
-                <b:commandButton value="Sign In" look="primary" icon="log-in" iconAlign="left"/>
-            </h:form>
-        </b:navBar>
+      <ui:include src="../menu.xhtml"/>
         <b:container>
             <h:form>
                 <b:jumbotron styleClass="form-jumbotron">
-                    <h1>Please Sign In</h1>
+                    <h1>Ingresa a tu cuenta</h1>
                 </b:jumbotron>    
             </h:form>
         </b:container>

@@ -18,7 +18,7 @@ import javax.faces.context.FacesContext;
  */
 public class UserDAO {
     
-    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("B-RecuerdosPU");
+    public EntityManagerFactory emf = Persistence.createEntityManagerFactory("RecuerdosPU");
     
     public User createUser(User user) {
         EntityManager em = emf.createEntityManager();
