@@ -6,7 +6,6 @@
 package DataAccess.Entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 /**
  *
@@ -20,13 +19,20 @@ public class Shop implements Serializable {
     private String name;
     private String address;
     private String url;
-    private Collection<Item> itemsCollection;
 
     public Shop() {
     }
 
     public Shop(Integer id) {
         this.id = id;
+    }
+
+    public Shop(Integer id, Integer managerId, String name, String address, String url) {
+        this.id = id;
+        this.managerId = managerId;
+        this.name = name;
+        this.address = address;
+        this.url = url;
     }
 
     public Integer getId() {
@@ -68,13 +74,8 @@ public class Shop implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
-    public Collection<Item> getItemsCollection() {
-        return itemsCollection;
-    }
 
-    public void setItemsCollection(Collection<Item> itemsCollection) {
-        this.itemsCollection = itemsCollection;
-    }
+   
 
     @Override
     public int hashCode() {
