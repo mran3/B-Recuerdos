@@ -77,19 +77,9 @@ public class ShopBean implements Serializable  {
     }
     
     public void createShop(){
-        //ShopController shopController = new ShopController();
-        message = ShopController.createShop(new Shop(idShop));
+        message = ShopController.createShop(new Shop(idShop,idManager,shopName,shopAddress,shopURL));
     }
     
-   /* public void consutShop(){
-        ShopController shopController = new ShopController();
-        ArrayList consult = null;
-        consult = shopController.consultShop(idShop);
-        idManager = (Integer) consult.get(0);
-        shopName = (String) consult.get(1);
-        shopAddress = (String) consult.get(2);
-        shopURL = (String) consult.get(3);
-    }*/
     
         public void consutShop() {
         ArrayList<Shop> temp = ShopController.consultShop(idShop);
@@ -101,12 +91,10 @@ public class ShopBean implements Serializable  {
     }
     
     public void updateShop(){
-        //ShopController shopController = new ShopController();
-        message = ShopController.updateShop(new Shop(idShop));
+        message = ShopController.updateShop(new Shop(idShop,idManager,shopName,shopAddress,shopURL));
     }
     
     public void deleteShop(){
-       // ShopController shopController = new ShopController();
         message = ShopController.deleteShop(new Shop (idShop));
     }
     
