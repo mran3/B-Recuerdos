@@ -61,7 +61,7 @@ public class UserController {
                 return "err2";
             }
             context.getExternalContext().getSessionMap().put(USER_SESSION_KEY, userLogin);
-            return "main-admin";
+            return "main-index";
         } else {           
             return "err1";
         }        
