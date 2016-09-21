@@ -6,6 +6,7 @@
 
     <navigation-rule>
         
+
         <navigation-case>
             <from-outcome>main-admin</from-outcome>
             <to-view-id>Users/createUser.xhtml</to-view-id>
@@ -16,11 +17,14 @@
             <to-view-id>/pages/operator/mainoperator.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        
         <navigation-case>
-            <from-outcome>error-page</from-outcome>
-            <to-view-id>/Bank/faces/index.xhtml</to-view-id>
+            <from-outcome>login</from-outcome>
+            <to-view-id>Users/loginUser.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        
+        
         <navigation-case>
             <from-outcome>main-index</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
@@ -164,6 +168,7 @@
         <navigation-case>
             <from-outcome>deleteOrder</from-outcome>
             <to-view-id>/Ventas/deleteOrder.xhtml</to-view-id>
+
         </navigation-case>
     </navigation-rule>
  
