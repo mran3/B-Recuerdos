@@ -3,12 +3,10 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-    <navigation-rule>    
-        <navigation-case>
-            <from-outcome>createUser</from-outcome>
-            <to-view-id>Users/createUser.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
+
+    <navigation-rule>
+        
+
         <navigation-case>
             <from-outcome>main-admin</from-outcome>
             <to-view-id>Users/createUser.xhtml</to-view-id>
@@ -99,5 +97,79 @@
             <from-outcome>searchUsers</from-outcome>
             <to-view-id>/pages/administrator/resultUsers.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>items</from-outcome>
+            <to-view-id>/Items/items.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createItem</from-outcome>
+            <to-view-id>/Items/createItem.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultItem</from-outcome>
+            <to-view-id>/Items/consultItem.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>updateItem</from-outcome>
+            <to-view-id>/Items/updateItem.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>deleteItem</from-outcome>
+            <to-view-id>/Items/deleteItem.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>users</from-outcome>
+            <to-view-id>/Users/users.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createUser</from-outcome>
+            <to-view-id>/Users/createUser.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultUser</from-outcome>
+            <to-view-id>/Users/consultUser.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>updateUser</from-outcome>
+            <to-view-id>/Users/updateUser.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>deleteUser</from-outcome>
+            <to-view-id>/Users/deleteUser.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>shops</from-outcome>
+            <to-view-id>/Shop/shop.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createShop</from-outcome>
+            <to-view-id>/Shop/createShop.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultShop</from-outcome>
+            <to-view-id>/Shop/consultShop.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>updateShop</from-outcome>
+            <to-view-id>/Shop/updateShop.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>deleteShop</from-outcome>
+            <to-view-id>/Shop/deleteShop.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>orders</from-outcome>
+            <to-view-id>/Ventas/orders.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createOrder</from-outcome>
+            <to-view-id>/Ventas/sales.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>deleteOrder</from-outcome>
+            <to-view-id>/Ventas/deleteOrder.xhtml</to-view-id>
+
+        </navigation-case>
     </navigation-rule>
+ 
 </faces-config>
