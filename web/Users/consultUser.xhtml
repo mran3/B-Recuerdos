@@ -6,7 +6,7 @@
                 xmlns:b="http://bootsfaces.net/ui">>
 
     <ui:define name="title">
-        Recuerdos el Dorado :: Consultar Item
+        Recuerdos el Dorado :: Consultar Usuario
     </ui:define>
 
     <ui:define name="content">
@@ -22,7 +22,7 @@
                 <b:column col-md="6" offset="3">
                     <b:panel title="Consult User" look="info">
                         <h:form styleClass="form-panel">
-                            <b:inputText id="document" placeholder="Document" value="#{userBean.document}" required="true" requiredMessage="The document is required!">
+                            <b:inputText id="user" placeholder="user" value="#{userBean.userName}" required="true" requiredMessage="The document is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
@@ -30,26 +30,33 @@
                             <b:commandButton action="#{userBean.consultUser()}" value="Consult" look="info" icon="search" iconAlign="left"/>
                         </h:form>
                         <h:form styleClass="form-panel">
-                            <b:inputText id="firstName" placeholder="First name" value="#{userBean.firstName}" disabled="true">
+                            <b:inputText id="firstName" placeholder="First name" value="{userBean.firstName}" disabled="true">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
-                            <b:inputText id="lastName" placeholder="Last name" value="#{userBean.lastName}" disabled="true">
+                            <b:inputText id="lastName" placeholder="Last name" value="{userBean.lastName}" disabled="true">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
-                            <b:inputText id="userName" placeholder="Username" value="#{userBean.userName}" disabled="true">
+                            <b:inputText id="email" placeholder="email" value="#{userBean.email}" disabled="true">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
+                            <b:inputSecret id="password" placeholder="password" value="#{userBean.password}" disabled="true">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputSecret>
+                            
+                            
                         </h:form>
                     </b:panel>
                 </b:column>
             </b:row>
             <hr/>
-
+        </b:container>
     </ui:define>
 </ui:composition>

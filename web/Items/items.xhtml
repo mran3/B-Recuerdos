@@ -6,7 +6,7 @@
                 xmlns:b="http://bootsfaces.net/ui">>
 
     <ui:define name="title">
-        Recuerdos el Dorado :: Items
+        Recuerdos el Dorado :: Recuerdos
     </ui:define>
 
     <ui:define name="content">
@@ -15,7 +15,7 @@
             <h:form>
                 <b:jumbotron>
                     <b:icon name="glyphicon glyphicon-lamp" size="4x"/>
-                    <h1>Items</h1>
+                    <h1>Recuerdos</h1>
                 </b:jumbotron>
             </h:form>
         </b:container>
@@ -25,35 +25,32 @@
                 <h:form>
                     <b:row>
                         <b:column col-md="3">
-                            <b:panel title="Create Item" look="success">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:panel title="Agregar Recuerdo" look="success">
+                                <p>Aqui puedes agregar nuevos recuerdos a tu tienda</p>
                                 <b:button outcome="createItem" look="primary" value="Go" icon="plus"/>
                             </b:panel>
                         </b:column>
                         <b:column col-md="3">
-                            <b:panel title="Consult Item" look="info">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:panel title="Consutlar Recuerdo" look="info">
+                                <p>Consulta cualquier item</p>
                                 <b:button outcome="consultItem" look="primary" value="Go" icon="search"/>
                             </b:panel>
                         </b:column>
                         <b:column col-md="3">
-                            <b:panel title="Update Item" look="warning">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:panel title="Actualizar Recuerdo" look="warning">
+                                <p>Actualiza la informacón de los recuerdos previamente añadidos</p>
                                 <b:button outcome="updateItem" look="primary" value="Go" icon="ok"/>
                             </b:panel>
                         </b:column>
                         <b:column col-md="3">
-                            <b:panel title="Delete Item" look="danger">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:panel title="Eliminar Recuerdo" look="danger">
+                                <p>Elimina recuerdos que previamente añadidos</p>
                                 <b:button outcome="deleteItem" look="primary" value="Go" icon="remove"/>
                             </b:panel>
                         </b:column>
                     </b:row>
                 </h:form>
                 <hr/>
-                <footer>
-                    <p>Universidad Nacional de Colombia © 2016</p>
-                </footer>
             </b:panel>
         </b:container>
     </ui:define>
