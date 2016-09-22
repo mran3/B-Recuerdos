@@ -6,21 +6,21 @@
                 xmlns:b="http://bootsfaces.net/ui">>
 
     <ui:define name="title">
-        Recuerdos el Dorado :: Eliminar Item
+        Recuerdos el Dorado :: Eliminar Recuerdo
     </ui:define>
 
     <ui:define name="content">
         <b:container>
             <h:form>
                 <b:jumbotron styleClass="form-jumbotron">
-                    <h1>Delete User</h1>
+                    <h1>Eliminar Recuerdo</h1>
                 </b:jumbotron>    
             </h:form>
         </b:container>
         <b:container>
             <b:row>
                 <b:column col-md="6" offset="3">
-                    <b:panel title="Delete Item" look="danger">
+                    <b:panel title="Eliminar Recuerdo" look="danger">
                         <h:form styleClass="form-panel">
                             <b:inputText id="ID" placeholder="ID" value="#{itemBean.id}" required="true" requiredMessage="The id is required!">
                                 <f:facet name="prepend">
@@ -35,9 +35,8 @@
                 </b:column>
             </b:row>
             <hr/>
-            <footer>
-                <p>Universidad Nacional de Colombia © 2016</p>
-            </footer>
+          
+            
         </b:container>    
     </ui:define>
 </ui:composition>
