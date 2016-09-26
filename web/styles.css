@@ -22,12 +22,12 @@ img{
     margin-bottom: 6px;
 }
 .hero{
-background: url(img/hero.jpg);
+background: url(img/hero-d.jpg);
 min-height: 397px;
-background-size: cover;
+background-size: contain;
 width: 79%;
 margin: auto;
 background-repeat: no-repeat;
-margin-top: 3rem;
+margin-top: 7rem;
 }
 
