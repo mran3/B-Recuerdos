@@ -1,76 +1,60 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Recuerdos :: Items</title>
-        <meta name="author" content="The Author"></meta>
-    </h:head>
-    <h:body style="padding-top: 50px; padding-bottom: 20px;">
-        <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
-            <b:navbarLinks>
-                <b:dropMenu value="Items">
-                    <b:navLink value="Create Item" outcome="createItem"></b:navLink>
-                    <b:navLink value="Consult Item" outcome="consultItem"></b:navLink>
-                    <b:navLink value="Update Item" outcome="updateItem"></b:navLink>
-                    <b:navLink value="Delete Item" outcome="deleteItem"></b:navLink>
-                    <b:navLink value="Login Item" outcome="loginItem"></b:navLink>
-                </b:dropMenu>
-            </b:navbarLinks>
-            <h:form styleClass="navbar-form navbar-right">
-                <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
-            </h:form>
-        </b:navBar>
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui">>
+
+    <ui:define name="title">
+        Recuerdos el Dorado :: Recuerdos
+    </ui:define>
+
+    <ui:define name="content">
+
         <b:container>
             <h:form>
                 <b:jumbotron>
-                    <b:icon name="glyphicon glyphicon-user" size="4x"/>
-                    <h1>Items</h1>
+                    <b:icon name="glyphicon glyphicon-lamp" size="4x"/>
+                    <h1>Recuerdos</h1>
                 </b:jumbotron>
             </h:form>
         </b:container>
-        
+
         <b:container>
             <b:panel>
                 <h:form>
                     <b:row>
                         <b:column col-md="3">
-                            <b:panel title="Create Item" look="success">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:panel title="Agregar Recuerdo" look="success">
+                                <p>Aqui puedes agregar nuevos recuerdos a tu tienda</p>
                                 <b:button outcome="createItem" look="primary" value="Go" icon="plus"/>
                             </b:panel>
                         </b:column>
                         <b:column col-md="3">
-                            <b:panel title="Consult Item" look="info">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:panel title="Consutlar Recuerdo" look="info">
+                                <p>Consulta cualquier item</p>
                                 <b:button outcome="consultItem" look="primary" value="Go" icon="search"/>
                             </b:panel>
                         </b:column>
                         <b:column col-md="3">
-                            <b:panel title="Update Item" look="warning">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:panel title="Actualizar Recuerdo" look="warning">
+                                <p>Actualiza la informacón de los recuerdos previamente añadidos</p>
                                 <b:button outcome="updateItem" look="primary" value="Go" icon="ok"/>
                             </b:panel>
                         </b:column>
                         <b:column col-md="3">
-                            <b:panel title="Delete Item" look="danger">
-                                <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                            <b:panel title="Eliminar Recuerdo" look="danger">
+                                <p>Elimina recuerdos que previamente añadidos</p>
                                 <b:button outcome="deleteItem" look="primary" value="Go" icon="remove"/>
                             </b:panel>
                         </b:column>
                     </b:row>
                 </h:form>
                 <hr/>
-                <footer>
-                    <p>Universidad Nacional de Colombia © 2016</p>
-                </footer>
             </b:panel>
         </b:container>
-    </h:body>
-</html>
+    </ui:define>
+</ui:composition>
 
 
 

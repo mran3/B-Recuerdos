@@ -1,34 +1,21 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Recuerdos :: Ventas</title>
-        <meta name="author" content="The Author"></meta>
-    </h:head>
-    <h:body style="padding-top: 50px; padding-bottom: 20px;">
-        <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
-            <b:navbarLinks>
-                <b:dropMenu value="Items">
-                    <b:navLink value="Create Item" outcome="createItem"></b:navLink>
-                    <b:navLink value="Consult Item" outcome="consultItem"></b:navLink>
-                    <b:navLink value="Update Item" outcome="updateItem"></b:navLink>
-                    <b:navLink value="Delete Item" outcome="deleteItem"></b:navLink>
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui">>
 
-                </b:dropMenu>
-            </b:navbarLinks>
-            <h:form styleClass="navbar-form navbar-right">
-                <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
-            </h:form>
-        </b:navBar>
+    <ui:define name="title">
+        Recuerdos el Dorado :: Comprar Recuerdos
+    </ui:define>
+
+    <ui:define name="content">
+
         <b:container>
             <h:form>
                 <b:jumbotron>
-                    <b:icon name="glyphicon glyphicon-euro" size="4x"/>
-                    <h2>Items for sale</h2>
+                    <b:icon name="glyphicon glyphicon-shopping-cart" size="4x"/>
+                    <h2>Recuerdos a la venta </h2>
                 </b:jumbotron>
             </h:form>
         </b:container>
@@ -36,7 +23,7 @@
             <b:tab>
                 <ui:repeat var="item" varStatus="status" value="#{itemBean.list}">  
                     <b:column col-md="3" offset="#{status.index%3}">
-                        <b:panel title="iItem for sale" look="success">
+                        <b:panel title="Lleva con tigo este recuerdo" look="success">
                             <h3>#{status.index} - ID: #{item.id}</h3><br/>  
                             <h3>Name: #{item.name}</h3><br/>
                             <h5>Description #{item.description}</h5><br/>
@@ -44,7 +31,7 @@
                             <h5>Stock: #{item.stock}</h5><br/>
 
                             <h:form>
-                                <b:commandButton action="#{orderBean.addToCart(item.id, orderBean.quanty , item.price)}" value="Buy" look="success" icon="plus" iconAlign="left"/>
+                                <b:commandButton action="#{orderBean.addToCart(item.id, orderBean.quanty , item.price)}" value="Comprar" look="success" icon="plus" iconAlign="left"/>
                             </h:form>  
                         </b:panel>
                     </b:column>
@@ -56,7 +43,7 @@
         <b:row></b:row>
         <b:row>
             <b:column col-md="6" offset="3">
-                <b:panel title="Create Order" look="success">
+                <b:panel title="Crear Orden" look="success">
                     <h:form styleClass="form-panel">
                         <b:datepicker id="Date" placeholder="Date" value="#{orderBean.date}" >
                             <f:facet name="prepend">
@@ -84,7 +71,7 @@
                         <h:panelGrid columns="3" cellpadding="5">
                             <h:column> </h:column>
                             <h:column> 
-                                <b:inputText id="totalPrice"  label="Price" value="#{orderBean.totalPrice}" >
+                                <b:inputText id="totalPrice"  label="Precio total" value="#{orderBean.totalPrice}" >
                                     <f:facet name="prepend">
                                         <b:icon name="euro" />
                                     </f:facet>
@@ -92,14 +79,14 @@
                             </h:column>
 
                         </h:panelGrid>
-                        <b:commandButton action="#{orderBean.createOrder()}" value="Create" look="success" icon="plus" iconAlign="left"/>
+                        <b:commandButton action="#{orderBean.createOrder()}" value="Finalizar Compra!" look="success" icon="plus" iconAlign="left"/>
                     </h:form>
-                    <b:alert severity="success" title="Message" closable="true">#{orderBean.message}</b:alert>
+                    <b:alert severity="success" title="Mensaje" closable="true">#{orderBean.message}</b:alert>
                 </b:panel>
             </b:column>
         </b:row>
-    </h:body>
-</html>
-
+        
+    </ui:define>
+</ui:composition>
 
 

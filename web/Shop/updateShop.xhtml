@@ -1,43 +1,20 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-          
-    <h:head>
-        <title>Tienda :: Update Shop</title>
-        <meta name="author" content="The Author"></meta>
-        <style type="text/css">
-            .form-jumbotron {
-                padding: 20px;
-                text-align: center;
-            }
-            .form-panel {
-                margin: 0 auto;
-                max-width: 330px;
-                padding: 15px;
-            }
-        </style>
-    </h:head>
-    <h:body style="padding-top: 50px; padding-bottom: 20px;">
-        <b:navBar brand="Bank" brandHref="/Bank/faces/index.xhtml" inverse="true" fixed="top">
-            <b:navbarLinks>
-                <b:dropMenu value="Shops">
-                    <b:navLink value="Create Shop" outcome="createShop"></b:navLink>
-                    <b:navLink value="Consult Shop" outcome="consultShop"></b:navLink>
-                    <b:navLink value="Update Shop" outcome="updateShop"></b:navLink>
-                    <b:navLink value="Delete Shop" outcome="deleteShop"></b:navLink>
-                </b:dropMenu>
-            </b:navbarLinks>
-            <h:form styleClass="navbar-form navbar-right">
-                <b:commandButton value="Sign Out" look="danger" icon="log-out" iconAlign="left"/>
-            </h:form>
-        </b:navBar>
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui">>
+
+    <ui:define name="title">
+        Recuerdos el Dorado :: Actualizar Tienda
+    </ui:define>
+
+    <ui:define name="content">
+
         <b:container>
             <h:form>
                 <b:jumbotron styleClass="form-jumbotron">
-                    <h1>Update Shop</h1>
+                    <h1>Actualizar Tienda</h1>
                 </b:jumbotron>    
             </h:form>
         </b:container>
@@ -80,11 +57,6 @@
                     </b:panel>
                 </b:column>
             </b:row>
-            <hr/>
-            <footer>
-                <p>Universidad Nacional de Colombia © 2016</p>
-            </footer>
-        </b:container>
-    </h:body>
-</html>
-
+        </b:container>         
+    </ui:define>
+</ui:composition>
