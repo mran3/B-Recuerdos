@@ -42,9 +42,10 @@ public class UserBean implements Serializable {
         return context.getExternalContext().getSessionMap().get(USER_SESSION_KEY) != null;
     }
     
-     public void logOut() {
+     public String logOut() {
         FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().getSessionMap().clear();
+        return "main-index"; 
     }
 
     public String getUserName() {

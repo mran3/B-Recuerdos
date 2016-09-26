@@ -19,8 +19,9 @@ and open the template in the editor.
         <div id="header">Header</div>
         <div id="menu">
             <b:navBar  inverse="true" fixed="top">
-                <img id="logo" src="img/logo3.png" />
-                <b:navbarLinks>
+                <a href="/B-Recuerdos/faces/index.xhtml">
+                    <img id="logo" src="/B-Recuerdos/img/logo-d2.png" />
+                </a><b:navbarLinks>
                     <b:dropMenu value="Usuarios" styleClass="#{sessionBean.getPermision(4)}" >
                         <b:navLink value="Consultar Usuario" outcome="consultUser" class="#{sessionBean.getPermision(4)}" ></b:navLink>
                         <b:navLink value="Actualizar Usuario" outcome="updateUser" class="#{sessionBean.getPermision(4)}" ></b:navLink>
@@ -40,15 +41,18 @@ and open the template in the editor.
                     </b:dropMenu>
                     <b:dropMenu value="Ventas" class="#{sessionBean.getPermision(7)}" >
                         <b:navLink value="Crear Ventas" outcome="createOrder"></b:navLink>
+                        <b:navLink value="Consultar Ventas" outcome="consultOrder"></b:navLink>
                         <b:navLink value="Eliminar Ventas" outcome="deleteOrder" class="#{sessionBean.getPermision(4)}" ></b:navLink>
                     </b:dropMenu>
                     
                 </b:navbarLinks>
                 <h2><b:label text="#{sessionBean.userName} - #{sessionBean.role}" >
                 </b:label></h2>
+                
                 <h:form styleClass="navbar-form navbar-right auth-buttons">
-                    <b:button outcome="#" value="#{sessionBean.userName}" look="primary" icon="user" iconAlign="left"/>
-                    <b:button outcome="loginUser" value="Ingresa" look="primary" icon="log-in" iconAlign="left"/>
+                <!--    <<b:button outcome="#" value="#{sessionBean.userName}" look="primary" icon="user" iconAlign="left"/> -->
+                    <b:commandButton value="Salir" look="danger" icon="log-out" iconAlign="left" rendered="#{userBean.isLoggedIn()}" action="#{userBean.logOut()}"/>
+                    <b:commandButton value="Ingresa" look="primary" icon="log-in" iconAlign="left" rendered="#{!userBean.isLoggedIn()}"  action="login"/>
                     <b:button outcome="createUser" value="Registrate" look="primary" icon="star-empty" iconAlign="left"/>
                 </h:form>
             </b:navBar>

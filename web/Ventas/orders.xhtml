@@ -31,13 +31,13 @@
                             </b:panel>
                         </b:column>
                         <b:column col-md="3">
-                            <b:panel title="Consult Order" look="info">
+                            <b:panel title="Consultar Ordenes" look="info">
                                 <p>Consulta ventas realizadas previamente</p>
                                 <b:button outcome="consultOrder" look="primary" value="Go" icon="search"/>
                             </b:panel>
                         </b:column>
-                        <b:column col-md="3">
-                            <b:panel title="Delete Order" look="danger">
+                        <b:column col-md="3" class="#{sessionBean.getPermision(4)}" >
+                            <b:panel title="Eliminar Ordenes" look="danger">
                                 <p>Eliminar ventas realizadas previamente</p>
                                 <b:button outcome="deleteOrder" look="primary" value="Go" icon="remove"/>
                             </b:panel>
