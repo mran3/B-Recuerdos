@@ -7,7 +7,6 @@ package Presentation.Bean;
 
 import BusinessLogic.Controller.UserController;
 import static BusinessLogic.Controller.UserController.USER_SESSION_KEY;
-import static com.sun.faces.facelets.util.Path.context;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
