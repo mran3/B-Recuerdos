@@ -104,11 +104,9 @@ public class UserBean implements Serializable {
     
     public void consultUser() {
         UserController userController = new UserController();
-        /*
         userName = userController.consultUser(id).getUserName();
         email = userController.consultUser(id).getEmail();
         role = userController.consultUser(id).getRole();
-        */
     }
     
     public String loginUser() {
@@ -134,13 +132,13 @@ public class UserBean implements Serializable {
     
     public void updateUser() {
         UserController userController = new UserController();
-        message = userController.updateUser(userName, email,
-                                            password,1, null); 
+        message = userController.updateUser(id,userName, email,
+                                            password,role, null); 
     }
     
     public void deleteUser() {
         UserController userController = new UserController();
-        //message = userController.deleteUser(id);
+        message = userController.deleteUser(id);
     }
     
 }

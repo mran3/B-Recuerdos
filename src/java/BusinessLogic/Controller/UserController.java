@@ -67,18 +67,20 @@ public class UserController {
         }        
     }
     
-    public String updateUser(String userName,
+    public String updateUser(Integer id,
+                             String userName,
                              String email,
                              String password,
                              Integer role,
                              Integer shop_id) {
         
-        User user = new User();
-        /*
+        User user = new User();  
         user.setId(id);
         user.setUserName(userName);
+        user.setEmail(email);
         user.setPassword(password);
-        */
+        user.setRole(role);
+        user.setShopId(shop_id);
         UserDAO userDAO = new UserDAO();
         User userUpdate = userDAO.updateUser(user);
         

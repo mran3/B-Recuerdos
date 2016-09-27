@@ -22,7 +22,7 @@
                 <b:column col-md="6" offset="3">
                     <b:panel title="Update User" look="warning">
                         <h:form styleClass="form-panel">
-                            <b:inputText id="username" placeholder="Username" value="#{userBean.userName}" required="true" requiredMessage="The document is required!">
+                            <b:inputText id="id" placeholder="id" value="#{userBean.id}" required="true" requiredMessage="The id is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
@@ -31,17 +31,12 @@
                             <b:commandButton action="#{userBean.consultUser()}" value="Find" look="warning" icon="search" iconAlign="left"/>
                         </h:form>
                         <h:form styleClass="form-panel">
-                            <b:inputText id="firstName" placeholder="First name" value="{userBean.firstName}">
+                            <b:inputText id="username" placeholder="User Name" value="#{userBean.userName}">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
-                            <b:inputText id="lastName" placeholder="Last name" value="{userBean.lastName}">
-                                <f:facet name="prepend">
-                                    <b:icon name="pencil" />
-                                </f:facet>
-                            </b:inputText>
-                            <b:inputText id="userName" placeholder="Username" value="#{userBean.email}">
+                            <b:inputText id="email" placeholder="Email" value="#{userBean.email}">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
@@ -51,6 +46,18 @@
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputSecret>
+                            <b:inputText id="role" placeholder="Role" value="#{userBean.role}">
+                                <f:facet name="prepend">
+                                    <b:icon name="pencil" />
+                                </f:facet>
+                            </b:inputText>
+                            <!-- <select>
+                                <optgroup label="Elegir un rol">
+                                    <option value="#{userBean.role}">1</option>
+                                    <option value="#{userBean.role}">2</option>
+                                    <option value="#{userBean.role}">3</option>
+                                </optgroup>
+                            </select> -->
                             <b:commandButton action="#{userBean.updateUser()}" value="Update" look="warning" icon="ok" iconAlign="left"/>
                         </h:form>
                         <b:alert severity="warning" title="Message" closable="true">#{userBean.message}</b:alert>

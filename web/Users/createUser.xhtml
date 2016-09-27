@@ -22,19 +22,19 @@
                 <b:column col-md="6" offset="3">
                     <b:panel title="Crea tu cuenta de usuario para disfrutar toda la funcionalidad que tenemos para ofrecerte" look="success">
                         <h:form styleClass="form-panel"  >
-                            <b:inputText id="id" placeholder="id" value="#{userBean.id}" required="true" requiredMessage="The document is required!">
+                            <b:inputText id="id" placeholder="id" value="#{userBean.id}" required="true" requiredMessage="The ID is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
                             <b:message for="@previous" />
-                            <b:inputText id="userName" placeholder="Username" value="#{userBean.userName}" required="true" requiredMessage="The first name is required!">
+                            <b:inputText id="userName" placeholder="Username" value="#{userBean.userName}" required="true" requiredMessage="The user name is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
                             <b:message for="@previous" />
-                            <b:inputText id="email" placeholder="Email" value="#{userBean.email}" required="true" requiredMessage="The last name is required!" type="email">
+                            <b:inputText id="email" placeholder="Email" value="#{userBean.email}" required="true" requiredMessage="The email is required!" type="email">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>

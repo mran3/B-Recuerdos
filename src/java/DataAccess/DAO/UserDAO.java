@@ -36,8 +36,8 @@ public class UserDAO {
     public User consultUser(Integer id) {
         EntityManager em = emf.createEntityManager();
         User user = null;
-        Query q = em.createNamedQuery("User.findByDocument");
-        q.setParameter("document", id);
+        Query q = em.createNamedQuery("User.findById");
+        q.setParameter("id", id);
         try {
             user = (User) q.getSingleResult();
         } catch (Exception e) {
@@ -61,14 +61,12 @@ public class UserDAO {
         return user;
     }
     
-    public User updateUser(User userUpdated) {
-        /* 
+    public User updateUser(User userUpdated) {        
         EntityManager em = emf.createEntityManager();
-        //User user = em.find(User.class, userUpdated.getId());
+        User user = em.find(User.class, userUpdated.getId());
         em.getTransaction().begin();
         try {
-            
-            user.setDocument(userUpdated.getId());
+            user.setId(userUpdated.getId());
             user.setUserName(userUpdated.getUserName());
             user.setEmail(userUpdated.getEmail());
             user.setRole(userUpdated.getRole());
@@ -81,8 +79,6 @@ public class UserDAO {
             em.close();
         }
         return user;
-        */
-        return null;
     }
     
     public String deleteUser(Integer id) {
