@@ -15,9 +15,12 @@ img{
     width: 300px;
     float:left;
 }
+#menu{
+    min-height: 90px;
+}
 .auth-buttons button{
     display: block;
-    width: 10em;
+    width: 12em;
     margin-top: 6px;
     margin-bottom: 6px;
 }
@@ -38,3 +41,4 @@ margin-top: 7rem;
 #content{
     margin-top: 5em;
 }
+

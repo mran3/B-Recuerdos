@@ -51,7 +51,8 @@ public class ItemDAO {
 
                 coll.insert(doc);
                 System.out.println("Document (ITEM) inserted successfully");
-                return "Save Item " + item.getId() + " sucess";
+                //return "Save Item " + item.getId() + " sucess";
+                return "Item agregado";
             } else {
                 return "Fail";
             }

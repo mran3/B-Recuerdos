@@ -61,7 +61,8 @@ public class OrderDAO {
                 doc.append("solditems", solditemsBDL);
                 coll.insert(doc);
                 System.out.println("Document (Order) inserted successfully");
-                return "Save Item " + order.getId() + " sucess";
+                //return "Save Item " + order.getId() + " sucess";
+                return "Tu orden fue procesada y recibirás tus productos dentro de poco";
             } else {
                 return "Fail";
             }
