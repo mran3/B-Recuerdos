@@ -30,24 +30,10 @@
             <to-view-id>/index.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
-        <navigation-case>
-            <from-outcome>deleteSchedule</from-outcome>
-            <to-view-id>/pages/operator/deleteSchedule.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>editSchedule</from-outcome>
-            <to-view-id>/pages/operator/editSchedule.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
+       
     </navigation-rule>
 
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>editSingleVehicles</from-outcome>
-            <to-view-id>/pages/administrator/editSingleVehicles.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+    
     <navigation-rule>
         <navigation-case>
             <from-outcome>editSingleTypeusers</from-outcome>
@@ -67,12 +53,7 @@
             <to-view-id>/pages/administrator/listTypeusers.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>listVehicles</from-outcome>
-            <to-view-id>/pages/administrator/listVehicles.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+    
     <navigation-rule>
         <navigation-case>
             <from-outcome>listUsers</from-outcome>
@@ -87,10 +68,7 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <navigation-case>
-            <from-outcome>searchVehicles</from-outcome>
-            <to-view-id>/pages/administrator/resultVehicles.xhtml</to-view-id>
-        </navigation-case>
+        
         <navigation-case>
             <from-outcome>searchUsers</from-outcome>
             <to-view-id>/pages/administrator/resultUsers.xhtml</to-view-id>

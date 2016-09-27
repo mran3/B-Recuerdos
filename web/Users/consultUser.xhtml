@@ -20,14 +20,14 @@
         <b:container>
             <b:row>
                 <b:column col-md="6" offset="3">
-                    <b:panel title="Consult User" look="info">
+                    <b:panel title="Consultar Usuario" look="info">
                         <h:form styleClass="form-panel">
                             <b:inputText id="id" placeholder="ID" value="#{userBean.id}" required="true" requiredMessage="The ID is required!">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
-                            <b:commandButton action="#{userBean.consultUser()}" value="Consult" look="info" icon="search" iconAlign="left"/>
+                            <b:commandButton action="#{userBean.consultUser()}" value="Consultar" look="info" icon="search" iconAlign="left"/><br /><br />
                         </h:form>
                         <h:form styleClass="form-panel">
                             <b:inputText id="userName" placeholder="User name" value="#{userBean.userName}" disabled="true">
