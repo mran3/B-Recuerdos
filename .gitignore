@@ -22,3 +22,4 @@ build/web/WEB-INF/classes/META-INF/persistence.xml
 /build.xml
 web/img/Thumbs.db
 web/WEB-INF/glassfish-resources.xml
+web/WEB-INF/glassfish-resources.xml

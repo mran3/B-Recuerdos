@@ -6,10 +6,10 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="recuerdos"/>
         <property name="User" value="root"/>
-        <property name="Password" value="toor"/>
+        <property name="Password" value="1234"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/recuerdos?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/RecuerdosDS" object-type="user" pool-name="mysql_recuerdos_rootPool"/>
-   
+    <jdbc-resource enabled="true" jndi-name="java:app/RecuerdosDS" object-type="user" pool-name="mysql_recuerdos_rootPool"/>
 </resources>
