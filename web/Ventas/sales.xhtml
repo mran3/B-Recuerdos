@@ -23,12 +23,13 @@
             <b:tab>
                 <ui:repeat var="item" varStatus="status" value="#{itemBean.list}">  
                     <b:column col-md="3" offset="#{status.index%3}">
-                        <b:panel title="Lleva con tigo este recuerdo" look="success">
-                            <h3>#{status.index} - ID: #{item.id}</h3><br/>  
-                            <h3>Name: #{item.name}</h3><br/>
+                        <b:panel title="Lleva contigo este recuerdo" look="success">
+                            <h5>Name: #{item.name}</h5><br/>
                             <h5>Description #{item.description}</h5><br/>
                             <h5>Price: #{item.price}</h5><br/>
                             <h5>Stock: #{item.stock}</h5><br/>
+                            <h5>Status: #{status.index}  </h5>
+                            <h5>ID: #{item.id}</h5><br/>  
 
                             <h:form>
                                 <b:commandButton action="#{orderBean.addToCart(item.id, orderBean.quanty , item.price)}" value="Comprar" look="success" icon="plus" iconAlign="left"/>
@@ -43,7 +44,7 @@
         <b:row></b:row>
         <b:row>
             <b:column col-md="6" offset="3">
-                <b:panel title="Crear Orden" look="success">
+                <b:panel title="Finalizar Orden" look="warning  ">
                     <h:form styleClass="form-panel">
                         <b:datepicker id="Date" placeholder="Date" value="#{orderBean.date}" >
                             <f:facet name="prepend">
@@ -57,10 +58,11 @@
                             </f:facet>
                         </b:inputText>
 
-                        <b:inputText id="UserID" placeholder="UserID" value="#{orderBean.userId}">
-                            <f:facet name="prepend">
+<!--                        <b:inputText id="UserID" placeholder="UserID" value="#{orderBean.userId}">-->
+                        <b:inputText type="hidden" id="UserID" placeholder="UserID" value="#{sessionBean.id}">
+<!--                            <f:facet name="prepend">
                                 <b:icon name="pencil" />
-                            </f:facet>
+                            </f:facet>-->
                         </b:inputText>
 
                         <b:dataTable value="#{orderBean.solditemsCollection}" var="s">
