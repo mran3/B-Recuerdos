@@ -29,26 +29,32 @@ and open the template in the editor.
                         <b:navLink value="Actualizar Usuario" outcome="updateUser"></b:navLink>
                         <b:navLink value="Eliminar Usuario" outcome="deleteUser"></b:navLink>
                     </b:dropMenu>
-                    <b:dropMenu value="Tiendas">
-                        <b:navLink value="Crear Tiendas" outcome="createShop"></b:navLink>
+                    <b:dropMenu value="Tiendas" styleClass="#{sessionBean.getPermision(6)}" >
+                        <b:navLink value="Crear Tiendas" outcome="createShop" class="#{sessionBean.getPermision(4)}" ></b:navLink>
                         <b:navLink value="Consultar Tiendas" outcome="consultShop"></b:navLink>
                         <b:navLink value="Actualizar Tiendas" outcome="updateShop"></b:navLink>
-                        <b:navLink value="Eliminar Tiendas" outcome="deleteShop"></b:navLink>
+                        <b:navLink value="Eliminar Tiendas" outcome="deleteShop" class="#{sessionBean.getPermision(4)}" ></b:navLink>
                     </b:dropMenu>
-                    <b:dropMenu value="Recuerdos">
+                    <b:dropMenu value="Recuerdos" styleClass="#{sessionBean.getPermision(6)}" >
                         <b:navLink value="Crear Recuerdos" outcome="createItem"></b:navLink>
                         <b:navLink value="Consultar Recuerdos" outcome="consultItem"></b:navLink>
                         <b:navLink value="Actualizar Recuerdos" outcome="updateItem"></b:navLink>
                         <b:navLink value="Eliminar Recuerdos" outcome="deleteItem"></b:navLink>
                     </b:dropMenu>
-                    <b:dropMenu value="Ventas">
+                    <b:dropMenu value="Ventas" class="#{sessionBean.getPermision(7)}" >
                         <b:navLink value="Crear Ventas" outcome="createOrder"></b:navLink>
-                        <b:navLink value="Eliminar Ventas" outcome="deleteOrder"></b:navLink>
+                        <b:navLink value="Consultar Ventas" outcome="consultOrder"></b:navLink>
+                        <b:navLink value="Eliminar Ventas" outcome="deleteOrder" class="#{sessionBean.getPermision(4)}" ></b:navLink>
                     </b:dropMenu>
                     
                 </b:navbarLinks>
+                <h2><b:label text="#{sessionBean.userName} - #{sessionBean.role}" >
+                </b:label></h2>
+                
                 <h:form styleClass="navbar-form navbar-right auth-buttons">
-                    <b:button outcome="loginUser" value="Ingresa" look="primary" icon="log-in" iconAlign="left"/>
+                <!--    <<b:button outcome="#" value="#{sessionBean.userName}" look="primary" icon="user" iconAlign="left"/> -->
+                    <b:commandButton value="Salir" look="danger" icon="log-out" iconAlign="left" rendered="#{userBean.isLoggedIn()}" action="#{userBean.logOut()}"/>
+                    <b:commandButton value="Ingresa" look="primary" icon="log-in" iconAlign="left" rendered="#{!userBean.isLoggedIn()}"  action="login"/>
                     <b:button outcome="createUser" value="Registrate" look="primary" icon="star-empty" iconAlign="left"/>
                 </h:form>
             </b:navBar>

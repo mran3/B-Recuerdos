@@ -30,6 +30,10 @@ margin: auto;
 background-repeat: no-repeat;
 margin-top: 7rem;
 }
+.hidden{
+    display: none
+    
+}
 
 #content{
     margin-top: 5em;

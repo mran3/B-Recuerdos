@@ -7,7 +7,6 @@ package Presentation.Bean;
 
 import BusinessLogic.Controller.UserController;
 import static BusinessLogic.Controller.UserController.USER_SESSION_KEY;
-import static com.sun.faces.facelets.util.Path.context;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -43,9 +42,10 @@ public class UserBean implements Serializable {
         return context.getExternalContext().getSessionMap().get(USER_SESSION_KEY) != null;
     }
     
-     public void logOut() {
+     public String logOut() {
         FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().getSessionMap().clear();
+        return "main-index"; 
     }
 
     public String getUserName() {

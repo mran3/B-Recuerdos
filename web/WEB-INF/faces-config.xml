@@ -104,7 +104,8 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>createItem</from-outcome>
-            <to-view-id>/Items/createItem.xhtml</to-view-id>
+            <to-view-id>/Items/createItem.x
+                html</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>consultItem</from-outcome>
@@ -178,6 +179,10 @@
         <navigation-case>
             <from-outcome>loginUser</from-outcome>
             <to-view-id>/Users/loginUser.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>consultOrder</from-outcome>
+            <to-view-id>/Ventas/consultOrder.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
  

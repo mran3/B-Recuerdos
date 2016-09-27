@@ -24,25 +24,25 @@
             <h:form>
                 <b:row>
                     <b:column col-md="3">
-                        <b:panel title="Create Shop" look="success">
+                        <b:panel title="Crear Tienda" look="success" class="#{sessionBean.getPermision(4)}" >
                             <p>Creacion de puntos de venta </p>
                             <b:button outcome="createShop" look="primary" value="Go" icon="plus"/>
                         </b:panel>
                     </b:column>
                     <b:column col-md="3">
-                        <b:panel title="Consult Shop" look="info">
+                        <b:panel title="Consultar Tienda" look="info">
                             <p>Consulta de las tiendas existentes.</p>
                             <b:button outcome="consultShop" look="primary" value="Go" icon="search"/>
                         </b:panel>
                     </b:column>
                     <b:column col-md="3">
-                        <b:panel title="Update Shop" look="warning">
+                        <b:panel title="Actualizar Tienda" look="warning">
                             <p>Actualizacion de datos de las tiendas.</p>
                             <b:button outcome="updateShop" look="primary" value="Go" icon="ok"/>
                         </b:panel>
                     </b:column>
-                    <b:column col-md="3">
-                        <b:panel title="Delete Shop" look="danger">
+                    <b:column col-md="3" class="#{sessionBean.getPermision(4)}" >
+                        <b:panel title="Eliminar Tienda" look="danger" >
                             <p>Eliminacion de las tiendas (cuidado).</p>
                             <b:button outcome="deleteShop" look="primary" value="Go" icon="remove"/>
                         </b:panel>

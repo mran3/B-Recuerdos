@@ -22,27 +22,27 @@
             <h:form>
                 <b:row>
                     <b:column col-md="3">
-                        <b:panel title="Create User" look="success">
-                            <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
+                        <b:panel title="Crear Usuario" look="success">
+                            <p>En este modulo puede crear usuarios</p>
                             <b:button outcome="createUser" look="primary" value="Go" icon="plus"/>
                         </b:panel>
                     </b:column>
                     <b:column col-md="3">
-                        <b:panel title="Consult User" look="info">
-                            <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
-                            <b:button outcome="consultUser" look="primary" value="Go" icon="search"/>
+                        <b:panel title="Consultar Usuario" look="info">
+                            <p>En este modulo puede consultar usuarios</p>
+                            <b:button outcome="consultUser" look="primary" value="Go" icon="search" class="#{sessionBean.getPermision(4)}"/>
                         </b:panel>
                     </b:column>
                     <b:column col-md="3">
-                        <b:panel title="Update User" look="warning">
-                            <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
-                            <b:button outcome="updateUser" look="primary" value="Go" icon="ok"/>
+                        <b:panel title="Actualizar Usuario" look="warning">
+                            <p>En este modulo puede Actualizar usuarios</p>
+                            <b:button outcome="updateUser" look="primary" value="Go" icon="ok" class="#{sessionBean.getPermision(4)}"/>
                         </b:panel>
                     </b:column>
                     <b:column col-md="3">
-                        <b:panel title="Delete User" look="danger">
-                            <p>Submodule description. Submodule description. Submodule description. Submodule description.</p>
-                            <b:button outcome="deleteUser" look="primary" value="Go" icon="remove"/>
+                        <b:panel title="Eliminar Usuario" look="danger">
+                            <p>En este modulo puede puede eliminar usuarios</p>
+                            <b:button outcome="deleteUser" look="primary" value="Go" icon="remove" class="#{sessionBean.getPermision(4)}"/>
                         </b:panel>
                     </b:column>
                 </b:row>
