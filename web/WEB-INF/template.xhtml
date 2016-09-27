@@ -48,14 +48,14 @@ and open the template in the editor.
                     </b:dropMenu>
                     
                 </b:navbarLinks>
-                <h2><b:label text="#{sessionBean.userName} - #{sessionBean.role}" >
-                </b:label></h2>
+                
                 
                 <h:form styleClass="navbar-form navbar-right auth-buttons">
                 <!--    <<b:button outcome="#" value="#{sessionBean.userName}" look="primary" icon="user" iconAlign="left"/> -->
                     <b:commandButton value="Salir" look="danger" icon="log-out" iconAlign="left" rendered="#{userBean.isLoggedIn()}" action="#{userBean.logOut()}"/>
                     <b:commandButton value="Ingresa" look="primary" icon="log-in" iconAlign="left" rendered="#{!userBean.isLoggedIn()}"  action="login"/>
-                    <b:button outcome="createUser" value="Registrate" look="primary" icon="star-empty" iconAlign="left"/>
+                    <b:commandButton value="#{sessionBean.userName} - #{sessionBean.role}" look="primary" icon="user" iconAlign="left" rendered="#{userBean.isLoggedIn()}"  action="login"/>
+                    <b:button outcome="createUser" value="Registrate" look="primary" icon="star-empty" iconAlign="left" rendered="#{!userBean.isLoggedIn()}"  />
                 </h:form>
             </b:navBar>
         </div>
