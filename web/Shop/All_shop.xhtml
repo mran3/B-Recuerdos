@@ -1,0 +1,68 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui">>
+
+    <ui:define name="title">
+        Recuerdos el Dorado :: Administrar Operarios de Tiendas
+    </ui:define>
+
+    <ui:define name="content">
+
+
+        <b:container>
+            <h:form>
+                <b:jumbotron>
+                    <b:icon name="glyphicon glyphicon-credit-card" size="4x"/>
+                    <h1>Administrar Operarios de Tiendas</h1>
+                </b:jumbotron>
+            </h:form>
+        </b:container>
+
+        <ui:repeat var="shop" varStatus="status" value="#{shopBean.list}">  
+            <b:row/>
+            <b:column span="2"/>
+            <b:panel col-md="8" collapsed="true" id="panel#{shop.id}" title="Tienda ID - #{shop.id}">
+                <h3>    Nombre: #{shop.name}</h3>
+                <h3>    URL: <a href="#{shop.url}">#{shop.url}</a></h3>
+                <h3>    Operarios trabajando en esta Tienda:</h3>
+                <h3>
+                    <ui:repeat var="oper" varStatus="status" value="#{shopBean.listDeEmpleados(shop.id)}">  
+                        <b:column span="1"/><b:label col-md="2" text=" #{oper.userName} " /></ui:repeat>
+                </h3>
+                <b:row/>
+                <br/>
+                <h2 span ="2">Desea agregar un operador más?</h2>
+                <h:outputText value="Id del nuevo opreador"/>
+                    
+                <h:form>
+                    
+                    <!--
+                    <b:inputText col-md="3" id="idadd" placeholder="ID" value="#{shopBean.roleadd}" required="true" requiredMessage="The ID is required!">
+                        <f:facet name="prepend">
+                            <b:icon name="pencil" />
+                        </f:facet>
+                    </b:inputText>
+                    -->
+                    <b:selectOneMenu col-md="3" value="#{shopBean.roleadd}" id="role" >
+                        <f:selectItem itemLabel="Porfavor selecione una" itemValue=""/>
+                        <ui:repeat var="employee" varStatus="status" value="#{shopBean.listEmployeeAll()}">  
+                            <f:selectItem itemLabel="#{employee.userName}" itemValue="#{employee.id}"/>
+                        </ui:repeat>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="op1" itemValue="5"/>
+                        <f:selectItem itemLabel="op1" itemValue="6"/>
+                    </b:selectOneMenu>
+                    
+                    <h:outputText value="??#{shopBean.roleadd}"/>
+                    
+                    <b:commandButton action="#{shopBean.updateUserFull(shopBean.roleadd, shop.id)}" value="Agregar Operador" look="success" icon="plus" iconAlign="left"/>
+                </h:form>  
+            </b:panel>
+        </ui:repeat>
+        <b:row/>
+    </ui:define>
+</ui:composition>
+

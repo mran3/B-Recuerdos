@@ -47,6 +47,12 @@
                             <b:button outcome="deleteShop" look="primary" value="Go" icon="remove"/>
                         </b:panel>
                     </b:column>
+                    <b:column col-md="3" class="#{sessionBean.getPermision(4)}" >
+                        <b:panel title="Administrar Tiendas con sus operarios" look="danger" >
+                            <p>Eliminacion de las tiendas (cuidado).</p>
+                            <b:button outcome="adminShop" look="primary" value="Go" icon="ok"/>
+                        </b:panel>
+                    </b:column>
                 </b:row>
             </h:form>
             

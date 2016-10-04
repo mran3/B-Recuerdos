@@ -120,12 +120,12 @@ public class SessionBean {
     
     public String getPermision(int access){
      checkUserofLogged();
-     int enable = role & access;
+     int enable = (int)Math.pow(2, (role-1)) & access;
      if ( enable == 0){
          return "hidden";
      }
      else{
-         return "node";
+         return "none";
      }
     }
 

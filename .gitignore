@@ -23,3 +23,5 @@ build/web/WEB-INF/classes/META-INF/persistence.xml
 web/img/Thumbs.db
 web/WEB-INF/glassfish-resources.xml
 web/WEB-INF/glassfish-resources.xml
+lib/eclipselinkmodelgen/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar
+web/WEB-INF/glassfish-resources.xml

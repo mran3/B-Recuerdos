@@ -161,6 +161,10 @@
             <from-outcome>consultOrder</from-outcome>
             <to-view-id>/Ventas/consultOrder.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>adminShop</from-outcome>
+            <to-view-id>/Shop/All_shop.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
  
 </faces-config>

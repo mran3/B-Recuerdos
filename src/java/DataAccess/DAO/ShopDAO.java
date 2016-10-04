@@ -86,6 +86,35 @@ public class ShopDAO {
             return accountConsult;
         }
     }
+        public ArrayList<Shop> consultAllShop() {
+        ArrayList accountConsult = new ArrayList();
+        try {
+            if (connectDB()) {
+                BasicDBObject whereQuery = new BasicDBObject();
+                // Sentence to search one account number
+                DBCursor cursor = coll.find(whereQuery);
+                while (cursor.hasNext()) {
+                    DBObject consultDocument = cursor.next();
+                    Shop shop = new Shop();
+
+                    shop.setId((int) consultDocument.get("id_shop"));
+                    shop.setManagerId((Integer) consultDocument.get("manager_id"));
+                    shop.setName((String) consultDocument.get("name"));
+                    shop.setAddress((String) consultDocument.get("address"));
+                    shop.setUrl((String) consultDocument.get("url"));
+
+                    accountConsult.add(shop);
+                }
+                System.out.println("Document (Shop) consulted successfully");
+                return accountConsult;
+            } else {
+                return accountConsult;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            return accountConsult;
+        }
+    }
         
  public String updateShop(Shop shop) {
         try {

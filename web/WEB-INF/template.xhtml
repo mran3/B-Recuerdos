@@ -34,6 +34,7 @@ and open the template in the editor.
                         <b:navLink value="Consultar Tiendas" outcome="consultShop"></b:navLink>
                         <b:navLink value="Actualizar Tiendas" outcome="updateShop"></b:navLink>
                         <b:navLink value="Eliminar Tiendas" outcome="deleteShop" class="#{sessionBean.getPermision(4)}" ></b:navLink>
+                        <b:navLink value="Adimistrar Operarios de Tiendas" outcome="adminShop" class="#{sessionBean.getPermision(4)}" ></b:navLink>
                     </b:dropMenu>
                     <b:dropMenu value="Recuerdos" styleClass="#{sessionBean.getPermision(6)}" >
                         <b:navLink value="Crear Recuerdos" outcome="createItem"></b:navLink>

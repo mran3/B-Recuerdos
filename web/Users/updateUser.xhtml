@@ -10,7 +10,7 @@
     </ui:define>
 
     <ui:define name="content">
-<b:container>
+        <b:container>
             <h:form>
                 <b:jumbotron styleClass="form-jumbotron">
                     <h1>Actualizar Usuario</h1>
@@ -27,7 +27,7 @@
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputText>
-                            
+
                             <b:commandButton action="#{userBean.consultUser()}" value="Buscar" look="warning" icon="search" iconAlign="left"/> <br /><br />
                         </h:form>
                         <h:form styleClass="form-panel">
@@ -46,7 +46,16 @@
                                     <b:icon name="pencil" />
                                 </f:facet>
                             </b:inputSecret>
-                            <b:inputText id="role" placeholder="Rol" value="#{userBean.role}">
+                             
+                            
+                            
+                            <b:selectOneMenu value="#{userBean.role}" id="role" >
+                                <f:selectItem itemLabel="Porfavor selecione una" itemValue=""/>
+                                <f:selectItem itemLabel="Cliente" itemValue="1"/>
+                                <f:selectItem itemLabel="Operador" itemValue="2"/>
+                                <f:selectItem itemLabel="Admin" itemValue="3"/>
+                            </b:selectOneMenu>
+                            <b:inputText id="role1" placeholder="Rol" value="#{userBean.role}">
                                 <f:facet name="prepend">
                                     <b:icon name="pencil" />
                                 </f:facet>
@@ -65,8 +74,8 @@
                 </b:column>
             </b:row>
             <hr/>
-            
+
         </b:container>
-            
+
     </ui:define>
 </ui:composition>
