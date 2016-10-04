@@ -6,7 +6,9 @@
 package BusinessLogic.Controller;
 
 import DataAccess.DAO.ShopDAO;
+import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.Shop;
+import DataAccess.Entity.User;
 import java.util.ArrayList;
 
 /**
@@ -15,27 +17,28 @@ import java.util.ArrayList;
  */
 public class ShopController {
 
-        public static String createShop(Shop shop) {
+    public static String createShop(Shop shop) {
         ShopDAO shopDAO = new ShopDAO();
         String accountCreate = shopDAO.createShop(shop);
         if (!accountCreate.equals("Fail")) {
             return accountCreate;
         } else {
             return "The account has not been created!";
-        }        
-    } 
+        }
+    }
 
-        public static ArrayList consultShop(Integer id) {
+    public static ArrayList consultShop(Integer id) {
         ShopDAO shopDAO = new ShopDAO();
         ArrayList<Shop> accountConsult = new ArrayList<Shop>();
         accountConsult = shopDAO.consutShop(id);
-        if(!accountConsult.isEmpty()){
+        if (!accountConsult.isEmpty()) {
             return accountConsult;
         } else {
             return null;
         }
-    }    
-        public static String updateShop(Shop shop) {
+    }
+
+    public static String updateShop(Shop shop) {
         ShopDAO shopDAO = new ShopDAO();
         String accountUpdate = shopDAO.updateShop(shop);
         if (!accountUpdate.equals("Fail")) {
@@ -44,7 +47,7 @@ public class ShopController {
             return "The account has not been updated!";
         }
     }
-        
+
     public static String deleteShop(Shop shop) {
         ShopDAO shopDAO = new ShopDAO();
         String accountDeleted = shopDAO.deleteShop(shop);
@@ -52,7 +55,32 @@ public class ShopController {
             return "The account has been deleted successfully!";
         } else {
             return "The account has not been updated!";
-        }        
-    } 
+        }
+    }
+
+    public static ArrayList<User> consultUserByShop(int id_shop) {
+
+        UserDAO userDAO = new UserDAO();
+        ArrayList<User> userConsult = userDAO.consultbyShop(id_shop);
+        return userConsult;
+
+    }
+
+    public static ArrayList<Shop> consultItemAll() {
+        ShopDAO shopDAO = new ShopDAO();
+        ArrayList<Shop> accountConsult = new ArrayList<Shop>();
+        accountConsult = shopDAO.consultAllShop();
+        if (!accountConsult.isEmpty()) {
+            return accountConsult;
+        } else {
+            return null;
+        }
+    }
+
+    public static ArrayList<User> consultAllEmployee() {
+        UserDAO userDAO = new UserDAO();
+        ArrayList<User> userConsult = userDAO.consultbyRole(2);
+        return userConsult;
+    }
 
 }

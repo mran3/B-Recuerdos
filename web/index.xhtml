@@ -12,7 +12,8 @@
 
     <ui:define name="content">
 
-        <b:jumbotron class="hero">
+        <b:jumbotron class="h">
+            <img src="img/hero-d.jpg" alt="HOME" style="width:100%">  </img>
             <!--            <b:container>
                             <h1>Bienvenido a Recuerdos Planetarios!</h1>
                             <img src="img/planet.png" />
@@ -25,7 +26,8 @@
         <b:container>
             <h:form>
                 <b:row>
-                    <b:column col-md="4" styleClass="#{sessionBean.getPermision(4)}" >
+                    <b:column span="2"/>
+                    <b:column col-md="8" styleClass="#{sessionBean.getPermision(4)}" >
                         <b:panel title="Usuarios" look="success">
                             <b:icon name="glyphicon glyphicon-user" size="2x"/>
                             <h2>Usuarios</h2>
@@ -33,7 +35,9 @@
                             <p><b:button outcome="users" value="Go" look="success"/></p>
                         </b:panel>
                     </b:column>
-                    <b:column col-md="4" styleClass="#{sessionBean.getPermision(6)}" >
+                    <b:row/>
+                    <b:column span="2"/>
+                    <b:column col-md="8" styleClass="#{sessionBean.getPermision(6)}" >
                         <b:panel title="Tiendas" look="success">
                             <b:icon name="glyphicon glyphicon-credit-card" size="2x"/>
                             <h2>Tiendas</h2>
@@ -41,7 +45,9 @@
                             <p><b:button outcome="shops" value="Go" look="success"/></p>
                         </b:panel>
                     </b:column>
-                    <b:column col-md="4"  styleClass="#{sessionBean.getPermision(6)}" >
+                    <b:row/>
+                    <b:column span="2"/>
+                    <b:column col-md="8"  styleClass="#{sessionBean.getPermision(6)}" >
                         <b:panel title="Recuerdos" look="success">
                             <b:icon name="glyphicon glyphicon-lamp" size="2x"/>
                             <h2>Recuerdos</h2>
@@ -49,7 +55,9 @@
                             <p><b:button outcome="items" value="Go" look="success"/></p>
                         </b:panel>
                     </b:column>
-                    <b:column col-md="4" class="#{sessionBean.getPermision(7)}" >
+                    <b:row/>
+                    <b:column span="2"/>
+                    <b:column col-md="8" class="#{sessionBean.getPermision(7)}" >
                         <b:panel title="Ventas" look="success">
                             <b:icon name="glyphicon glyphicon-shopping-cart" size="2x"/>
                             <h2>Ventas</h2>
@@ -60,6 +68,6 @@
                 </b:row>
             </h:form>
             <hr/>
-            </b:container>
+        </b:container>
     </ui:define>
 </ui:composition>

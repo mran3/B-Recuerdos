@@ -7,6 +7,7 @@ package Presentation.Bean;
 
 import BusinessLogic.Controller.UserController;
 import static BusinessLogic.Controller.UserController.USER_SESSION_KEY;
+import DataAccess.Entity.User;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -99,7 +100,7 @@ public class UserBean implements Serializable {
     public void createUser() {
         UserController userController = new UserController();
         message = userController.createUser(id, userName, email,
-                                            password, 1, null);
+                                            password, 1, shop_id);
     }
     
     public void consultUser() {
@@ -133,8 +134,9 @@ public class UserBean implements Serializable {
     public void updateUser() {
         UserController userController = new UserController();
         message = userController.updateUser(id,userName, email,
-                                            password,role, null); 
+                                            password,role, shop_id); 
     }
+    
     
     public void deleteUser() {
         UserController userController = new UserController();
