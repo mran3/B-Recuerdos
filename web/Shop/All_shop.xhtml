@@ -16,7 +16,7 @@
             <h:form>
                 <b:jumbotron>
                     <b:icon name="glyphicon glyphicon-credit-card" size="4x"/>
-                    <h1>Administrar Operarios de Tiendas</h1>
+                    <h2>Administrar Operarios de Tiendas</h2>
                 </b:jumbotron>
             </h:form>
         </b:container>
@@ -35,7 +35,7 @@
                 <b:row/>
                 <br/>
                 <h2 span ="2">Desea agregar un operador más?</h2>
-                <h:outputText value="Id del nuevo opreador"/>
+                <h:outputText value="Id del nuevo operador"/>
                     
                 <h:form>
                     
@@ -47,7 +47,7 @@
                     </b:inputText>
                     -->
                     <b:selectOneMenu col-md="3" value="#{shopBean.roleadd}" id="role" >
-                        <f:selectItem itemLabel="Porfavor selecione una" itemValue=""/>
+                        <f:selectItem itemLabel="Por favor seleccione" itemValue=""/>
                         <ui:repeat var="employee" varStatus="status" value="#{shopBean.listEmployeeAll()}">  
                             <f:selectItem itemLabel="#{employee.userName}" itemValue="#{employee.id}"/>
                         </ui:repeat>
@@ -56,7 +56,7 @@
                         <f:selectItem itemLabel="op1" itemValue="6"/>
                     </b:selectOneMenu>
                     
-                    <h:outputText value="??#{shopBean.roleadd}"/>
+                    <h:outputText value="#{shopBean.roleadd}"/>
                     
                     <b:commandButton action="#{shopBean.updateUserFull(shopBean.roleadd, shop.id)}" value="Agregar Operador" look="success" icon="plus" iconAlign="left"/>
                 </h:form>  

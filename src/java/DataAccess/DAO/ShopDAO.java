@@ -47,7 +47,7 @@ public class ShopDAO {
                         append("url", shop.getUrl());
                 coll.insert(doc);
                 System.out.println("Document (SHOP) inserted successfully");
-                return "Save Shop " + shop.getId() + " sucess";
+                return "Tienda guardada exitosamente con ID: " + shop.getId();
             } else {
                 return "Fail";
             }
