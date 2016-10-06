@@ -105,9 +105,22 @@ public class UserBean implements Serializable {
     
     public void consultUser() {
         UserController userController = new UserController();
-        userName = userController.consultUser(id).getUserName();
-        email = userController.consultUser(id).getEmail();
-        role = userController.consultUser(id).getRole();
+        User consultedUser  = userController.consultUser(id);
+        if(consultedUser== null){
+            this.clearUserInfo();
+            this.setMessage("Usuario no encontrado.");
+            return;
+        }
+        this.setMessage("Usuario encontrado.");
+        userName = consultedUser.getUserName();
+        email = consultedUser.getEmail();
+        role = consultedUser.getRole();
+    }
+    
+    public void clearUserInfo() {
+        this.userName = this.email ="";
+        this.role = null;
+        
     }
     
     public String loginUser() {

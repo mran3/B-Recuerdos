@@ -46,7 +46,7 @@
                                 </f:facet>
                             </b:inputText>
                             
-                            
+                            <b:alert style="display:#{(userBean.message.isEmpty())?'none':'block'}" severity="success" title="Mensaje" closable="true">#{userBean.message}</b:alert>
                         </h:form>
                     </b:panel>
                 </b:column>
