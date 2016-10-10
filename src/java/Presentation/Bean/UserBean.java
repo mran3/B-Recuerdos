@@ -41,10 +41,10 @@ public class UserBean implements Serializable {
           FacesContext context = FacesContext.getCurrentInstance();
           String currentPage = FacesContext.getCurrentInstance().getViewRoot().getViewId();
           if(!currentPage.contains("index") && !currentPage.contains("login") && !currentPage.contains("createUser")){
-              //context.getExternalContext().redirect("/B-Recuer-dos/loginUser.xhtml");
-              //context.getExternalContext().redirect("/B-Recuerdos/login");
-             NavigationHandler nh = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
-             nh.handleNavigation(FacesContext.getCurrentInstance(), null, "login");
+              if (!this.isLoggedIn()){
+                NavigationHandler nh = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
+                nh.handleNavigation(FacesContext.getCurrentInstance(), null, "login");
+              }
           }
           
           
