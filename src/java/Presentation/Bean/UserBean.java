@@ -8,8 +8,10 @@ package Presentation.Bean;
 import BusinessLogic.Controller.UserController;
 import static BusinessLogic.Controller.UserController.USER_SESSION_KEY;
 import DataAccess.Entity.User;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.NavigationHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -32,6 +34,21 @@ public class UserBean implements Serializable {
 
     public Integer getRole() {
         return role;
+    }
+     
+            
+    public void redirect() throws IOException {
+          FacesContext context = FacesContext.getCurrentInstance();
+          String currentPage = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+          if(!currentPage.contains("index") && !currentPage.contains("login") && !currentPage.contains("createUser")){
+              //context.getExternalContext().redirect("/B-Recuer-dos/loginUser.xhtml");
+              //context.getExternalContext().redirect("/B-Recuerdos/login");
+             NavigationHandler nh = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
+             nh.handleNavigation(FacesContext.getCurrentInstance(), null, "login");
+          }
+          
+          
+
     }
 
     public void setRole(Integer role) {
