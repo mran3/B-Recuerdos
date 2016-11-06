@@ -33,7 +33,7 @@ public class UserDAO {
     public Boolean connectDB() {
         try {
             // To connect to mongo dbserver
-            MongoClient mongoClient = new MongoClient("localhost", 27017);
+            MongoClient mongoClient = new MongoClient(Constansnt.HOST_BD_MONGO, Constansnt.PORT_BD_MONGO);
             // Now connect to your databases
             DB db = mongoClient.getDB("recuerdos");
             System.out.println("Connect to database successfully");
