@@ -166,4 +166,45 @@ public class OrderDAO {
         }
     }
 
+    public ArrayList<Order> consultOrderByUser(Integer document) {
+        ArrayList<Order> consult = new ArrayList<Order>();
+        try {
+            if (connectDB()) {
+                BasicDBObject whereQuery = new BasicDBObject();
+                whereQuery.put("user_id", document);
+
+                DBCursor cursor = coll.find();
+                while (cursor.hasNext()) {
+                    DBObject consultDocument = cursor.next();
+                    Order order = new Order();
+
+                    order.setUserId((int) consultDocument.get("user_id"));
+
+                    if (order.getUserId().equals(document)) {
+                        order.setDate((Date) consultDocument.get("date"));
+                        order.setTotalPrice((Long) consultDocument.get("total_price"));
+                        order.setId((Integer) consultDocument.get("id_order"));
+                        BasicDBList soleditemsBDL = (BasicDBList) consultDocument.get("solditems");
+                        Collection<Solditems> soleditemslist = new ArrayList<Solditems>();
+                        for (Object solditemBDO : soleditemsBDL) {
+                            DBObject temp = (BasicDBObject) solditemBDO;
+                            Solditems si = new Solditems((Integer) temp.get("quantity"), (Integer) temp.get("id_item"));
+                            soleditemslist.add(si);
+                        }
+                        order.setSolditemsCollection(soleditemslist);
+                        consult.add(order);
+                    }
+
+                }
+                System.out.println("Document (Items) consulted successfully");
+                return consult;
+            } else {
+                return consult;
+            }
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            return consult;
+        }
+    }
+
 }

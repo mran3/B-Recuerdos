@@ -122,7 +122,11 @@ public class OrderBean {
     }
 
     public void createOrder() {
+        SessionBean sb = new SessionBean();
+        
+        userId =  sb.getId();
         message = disminuirStock();
+        
         if (!message.equals("Fail")) {
             message = OrderController.createOrder(new Order(id, date, totalPrice, userId, solditemsCollection));
 

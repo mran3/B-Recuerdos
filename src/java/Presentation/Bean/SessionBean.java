@@ -46,7 +46,13 @@ public class SessionBean {
     }
 
     public Integer getId() {
-        return id;
+        checkUserofLogged();
+        if (userName == null) {
+            return 666;
+        } else {
+            return id;
+        }
+        
     }
 
     public void setId(Integer id) {
