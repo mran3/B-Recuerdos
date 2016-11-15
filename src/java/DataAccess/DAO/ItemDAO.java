@@ -207,18 +207,6 @@ public class ItemDAO {
         dao.updateItem(consItem);
         dao.deleteItem(item);
         
-        
-        
     }
-
-//    @Override
-//    public String toString() {
-////        return "User{" +
-////                "id=" + id +
-////                ", name='" + name + '\'' +
-////                ", email='" + email + '\'' +
-////                '}';
-//        return "tupalemarelu";
-//    }
     
 }
