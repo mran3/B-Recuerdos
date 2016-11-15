@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataAccess.DAO;
+package BusinessLogic.Service;
+
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
 /**
  *
- * @author JuanC Sexy
+ * @author niche
  */
-public class Constansnt {
-    public static final String HOST_BD_MONGO = "localhost";
-    public static final int PORT_BD_MONGO = 27017;
+@ApplicationPath("api")
+public class RestConf extends Application{
     
 }

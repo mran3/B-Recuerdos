@@ -33,7 +33,7 @@ public class UserDAO {
     public Boolean connectDB() {
         try {
             // To connect to mongo dbserver
-            MongoClient mongoClient = new MongoClient(Constansnt.HOST_BD_MONGO, Constansnt.PORT_BD_MONGO);
+            MongoClient mongoClient = new MongoClient(Constants.HOST_BD_MONGO, Constants.PORT_BD_MONGO);
             // Now connect to your databases
             DB db = mongoClient.getDB("recuerdos");
             System.out.println("Connect to database successfully");
@@ -314,7 +314,8 @@ public class UserDAO {
                     DBObject consultDocument = cursor.next();
                     User user = new User();
                     user.setId((Integer) consultDocument.get("id_user"));
-                    user.setRole((int) consultDocument.get("role"));
+                    int role = ((Double)(consultDocument.get("role"))).intValue();
+                    user.setRole(role);
                     user.setUserName((String) consultDocument.get("user_name"));
                     user.setEmail((String) consultDocument.get("email"));
                     user.setPassword((String) consultDocument.get("password"));

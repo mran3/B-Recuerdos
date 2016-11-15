@@ -6,7 +6,6 @@
 package DataAccess.DAO;
 
 import DataAccess.Entity.Item;
-import DataAccess.DAO.Constansnt;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -27,7 +26,7 @@ public class ItemDAO {
     public Boolean connectDB() {
         try {
             // To connect to mongo dbserver
-            MongoClient mongoClient = new MongoClient(Constansnt.HOST_BD_MONGO, Constansnt.PORT_BD_MONGO);
+            MongoClient mongoClient = new MongoClient(Constants.HOST_BD_MONGO, Constants.PORT_BD_MONGO);
             // Now connect to your databases
             DB db = mongoClient.getDB("recuerdos");
             System.out.println("Connect to database successfully");
@@ -131,6 +130,9 @@ public class ItemDAO {
                 BasicDBObject whereQuery = new BasicDBObject();
                 whereQuery.put("id_item", item.getId());
                 DBCursor cursor = coll.find(whereQuery);
+                if (cursor.count() <1 ){
+                    return "Item not found";
+                }
                 while (cursor.hasNext()) {
                     DBObject updateDocument = cursor.next();
                     updateDocument.put("name", item.getName());
@@ -151,6 +153,27 @@ public class ItemDAO {
         }
     }
 
+    public String deleteItem(int itemId) {
+        try {
+            if (connectDB()) {
+                BasicDBObject whereQuery = new BasicDBObject();
+                whereQuery.put("id_item", itemId);
+                DBCursor cursor = coll.find(whereQuery);
+                if (cursor.count()<1){
+                    return "Item "+itemId+" was not found";
+                }
+                coll.remove(whereQuery);
+                System.out.println("Document deleted successfully");
+                return "Success, Item "+itemId+" deleted";
+            } else {
+                return "Fail";
+            }
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            return "Fail";
+        }
+    }
+    
     public String deleteItem(Item item) {
         try {
             if (connectDB()) {
@@ -188,4 +211,14 @@ public class ItemDAO {
         
     }
 
+//    @Override
+//    public String toString() {
+////        return "User{" +
+////                "id=" + id +
+////                ", name='" + name + '\'' +
+////                ", email='" + email + '\'' +
+////                '}';
+//        return "tupalemarelu";
+//    }
+    
 }
