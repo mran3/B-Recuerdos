@@ -7,7 +7,6 @@ package Presentation.Bean;
 
 import BusinessLogic.Controller.ItemController;
 import BusinessLogic.Controller.OrderController;
-import BusinessLogic.Controller.MockCosumirServSOA;
 import DataAccess.Entity.Item;
 import DataAccess.Entity.Order;
 import DataAccess.Entity.Solditems;
@@ -35,28 +34,7 @@ public class OrderBean {
 
     private String message;
     private ArrayList<Order> list;
-    
-    private Integer descuento;
-    private long precioDescuento;
 
-    public long getPrecioDescuento() {
-        if (descuento != null)
-            return precioDescuento;
-        else return totalPrice;
-    }
-
-    public void setPrecioDescuento(long precioDescuento) {
-        this.precioDescuento = precioDescuento;
-    }
-
-    public void setDescuento(Integer descuento) {
-        this.descuento = descuento;
-    }
-
-    public Integer getDescuento() {
-        return descuento;
-    }
-    
     public Integer getQuanty() {
         return quanty;
     }
@@ -149,8 +127,6 @@ public class OrderBean {
         userId =  sb.getId();
         message = disminuirStock();
         
-        setTotalPrice(getPrecioDescuento());
-        
         if (!message.equals("Fail")) {
             message = OrderController.createOrder(new Order(id, date, totalPrice, userId, solditemsCollection));
 
@@ -214,20 +190,5 @@ public class OrderBean {
         }
         return s;
     }
-    
-    public void aplicarDescuento(){
-     double newPrice = getTotalPrice();
-     double des = (double)getDescuento()/100;
-     newPrice = newPrice * (1- des) ;
-     setPrecioDescuento((long)newPrice );   
-    }
-    
-    public void usarBono(){
-        MockCosumirServSOA  soa = new MockCosumirServSOA();
-        
-        setDescuento(soa.consumirSOA(soa.random())); 
-        aplicarDescuento();
-        message = soa.msm(getDescuento());
-                }
 
 }
