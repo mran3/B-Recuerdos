@@ -7,7 +7,7 @@
 var oModel = new sap.ui.model.json.JSONModel();
 
 /***** LOADING THE DATA *****/
-oModel.loadData('/A-Restaurantes/rest/restaurants');
+oModel.loadData('http://192.168.162.132/Guides/Rest/Plans');
 
 //var data =
 //        [
@@ -36,7 +36,7 @@ sap.ui.getCore().setModel(oModel);
 
 // create your table
 var oTable1 = new sap.ui.table.Table({
-    title: "Restaurantes",
+    title: "Hoteles",
     visibleRowCount: 4,
     selectionMode: sap.ui.table.SelectionMode.Single,
     navigationMode: sap.ui.table.NavigationMode.Paginator,
@@ -50,6 +50,16 @@ oTable1.addColumn(new sap.ui.table.Column({
         text: "Nombre"
     }),
     template: new sap.ui.commons.TextView({
+        text: '{agenciestourguides.name}'
+    }),
+    width: "10px"
+}));
+
+oTable1.addColumn(new sap.ui.table.Column({
+    label: new sap.ui.commons.Label({
+        text: "Nombre Plan"
+    }),
+    template: new sap.ui.commons.TextView({
         text: '{name}'
     }),
     width: "10px"
@@ -57,20 +67,10 @@ oTable1.addColumn(new sap.ui.table.Column({
 
 oTable1.addColumn(new sap.ui.table.Column({
     label: new sap.ui.commons.Label({
-        text: "Dirección"
+        text: "Price"
     }),
     template: new sap.ui.commons.TextView({
-        text: '{addres}'
-    }),
-    width: "10px"
-}));
-
-oTable1.addColumn(new sap.ui.table.Column({
-    label: new sap.ui.commons.Label({
-        text: "Teléfono"
-    }),
-    template: new sap.ui.commons.TextView({
-        text: '{phone}'
+        text: '{price}'
     }),
     width: "10px"
 }));

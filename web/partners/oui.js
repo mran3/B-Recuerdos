@@ -7,27 +7,9 @@
 var oModel = new sap.ui.model.json.JSONModel();
 
 /***** LOADING THE DATA *****/
-oModel.loadData('/B-Recuerdos/api/products');
+oModel.loadData('http://192.168.0.52/B-Recuerdos/api/products');
 
-//var data =
-//        [
-//            {"name": "Rajesh"},
-//            {"name": "Kunal Jauhari"},
-//            {"name": "Ashish Singh"},
-//            {"name": "Ansuman Parhi"},
-//            {"name": "Arup Kumar"},
-//            {"name": "Deepak Malviya"},
-//            {"name": "Seshu"},
-//            {"name": "Ankush Datey"},
-//            {"name": "Tapesh Syawaria"},
-//            {"name": "Mahesh"},
-//            {"name": "Vinay Joshi"},
-//            {"name": "Ardhendu Karna"},
-//            {"name": "Abhishek Shukla"},
-//            {"name": "Kashim"},
-//            {"name": "Vinayak"}
-//        ]
-//        ;
+
 
 /***** LOADING THE DATA *****/
 // load data from URL

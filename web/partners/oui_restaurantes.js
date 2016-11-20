@@ -7,7 +7,7 @@
 var oModel = new sap.ui.model.json.JSONModel();
 
 /***** LOADING THE DATA *****/
-oModel.loadData('/Guides/Rest/Plans');
+oModel.loadData('http://192.168.162.13/Restaurant/rest/restaurants');
 
 //var data =
 //        [
@@ -36,7 +36,7 @@ sap.ui.getCore().setModel(oModel);
 
 // create your table
 var oTable1 = new sap.ui.table.Table({
-    title: "Guias turisticas",
+    title: "Restaurantes",
     visibleRowCount: 4,
     selectionMode: sap.ui.table.SelectionMode.Single,
     navigationMode: sap.ui.table.NavigationMode.Paginator,

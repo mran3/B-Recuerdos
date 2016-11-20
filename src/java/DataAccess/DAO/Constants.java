@@ -10,6 +10,7 @@ package DataAccess.DAO;
  * @author JuanC Sexy
  */
 public class Constants {
+    //public static final String HOST_BD_MONGO = "192.168.162.50";
     public static final String HOST_BD_MONGO = "localhost";
     public static final int PORT_BD_MONGO = 27017;
     

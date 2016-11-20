@@ -32,7 +32,7 @@ public class LoginLdapController {
 
     public Boolean connect(){
 
-        String ldapHost = "127.0.0.1";
+        String ldapHost = "192.168.162.44";
         String dn = "cn=admin,dc=arqsoft,dc=unal,dc=edu,dc=co";
         String password = "sa2016ii";
 
