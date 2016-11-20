@@ -1,7 +1,7 @@
 # Recuerdos El Dorado
 Proyecto de arquitectura de software 2016.
 Este Proyecto es realizado por el grupo B del grupo 2 de Arquitectura de Software - Universidad Nacional de Colombia.
-# REST - API
+## REST - API
 Puedes consultar todos los productos disponibles en el siguiente endpoint:
 /B-Recuerdos/api/products
 
