@@ -7,6 +7,7 @@ package BusinessLogic.Controller;
 
 import DataAccess.DAO.UserDAO;
 import DataAccess.Entity.User;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import javax.faces.context.FacesContext;
 
@@ -19,6 +20,34 @@ public class UserController {
     public static final String USER_SESSION_KEY = "user";
 
     
+    /*
+    public String loginUser(String user, String password){
+
+        if (connect()) {
+            if (validatePassword(user, password)) {
+                return "Your login was successful.";
+            } else {
+                return "Username or password is incorrect.";
+            }
+        } else {
+            return "Conection to LDAP server failed..";
+        }
+    }
+    */ 
+    public String loginUser(String userName, String password) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        UserDAO userDAO = new UserDAO();
+        User userLogin = userDAO.loginUser(userName);
+        if (userLogin != null) {
+            if (!userLogin.getPassword().equals(password)) {
+                return "err2";
+            }
+            context.getExternalContext().getSessionMap().put(USER_SESSION_KEY, userLogin);
+            return "main-index";
+        } else {
+            return "err1";
+        }
+    }
     public String createUser(Integer id,
             String userName,
             String email,
@@ -56,21 +85,7 @@ public class UserController {
         }
     }
 
-    public String loginUser(String userName, String password) {
-        FacesContext context = FacesContext.getCurrentInstance();
-        UserDAO userDAO = new UserDAO();
-        User userLogin = userDAO.loginUser(userName);
-        if (userLogin != null) {
-            if (!userLogin.getPassword().equals(password)) {
-                return "err2";
-            }
-            context.getExternalContext().getSessionMap().put(USER_SESSION_KEY, userLogin);
-            return "main-index";
-        } else {
-            return "err1";
-        }
-    }
-
+    
     public String updateUser(Integer id,
             String userName,
             String email,
