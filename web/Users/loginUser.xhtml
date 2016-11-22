@@ -27,6 +27,7 @@
                             </b:inputSecret>
                             <b:commandButton action="#{userBean.loginUser()}" value="Ingresar" look="primary" icon="log-in" iconAlign="left"/>
                         </h:form>
+                        <b:alert severity="success"  title="Mensaje" closable="true">#{userBean.message}</b:alert>
                     </b:panel>
                 </b:column>
             </b:row>

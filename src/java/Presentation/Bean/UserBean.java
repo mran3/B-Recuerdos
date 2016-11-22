@@ -5,6 +5,7 @@
  */
 package Presentation.Bean;
 
+import BusinessLogic.Controller.LoginLdapController;
 import BusinessLogic.Controller.UserController;
 import static BusinessLogic.Controller.UserController.USER_SESSION_KEY;
 import DataAccess.Entity.User;
@@ -142,21 +143,36 @@ public class UserBean implements Serializable {
     
     public String loginUser() {
         FacesContext context = FacesContext.getCurrentInstance();
+        LoginLdapController login = new LoginLdapController();
+        message = login.login(userName, password);
+        
         UserController loginUsers = new UserController();
         String response = loginUsers.loginUser(userName, password);
+        
         if (response.equals("err1")){
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+            message = "LDAP - " + message + "Falló el Login! Usuario,El usuario no existe.";
+            /*FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Falló el Login! Usuario",
                     "El usuario no existe.");
             context.addMessage(null, message);
+            */
             return null;
         } else if (response.equals("err2")) {
+            message = "LDAP - " + message + "Falló el Login! password,El password no es correcto..";
+            
+            /*
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Falló el Login! password",
                     "El password no es correcto.");
             context.addMessage(null, message);
+            */
             return null;
-        } else {
+        } else if (!message.equals("Your login was successful.")) //Autenticacion con el LDAP
+        { 
+            //return null; //Commentar para omitir LDAP
+            return response; //Comentar para autenticar con LDAP
+        }
+        else {
             return response;
         }
     }

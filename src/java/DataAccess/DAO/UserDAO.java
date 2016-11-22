@@ -314,7 +314,8 @@ public class UserDAO {
                     DBObject consultDocument = cursor.next();
                     User user = new User();
                     user.setId((Integer) consultDocument.get("id_user"));
-                    int role = ((Double)(consultDocument.get("role"))).intValue();
+                    //int role = ((Double)(consultDocument.get("role"))).intValue();
+                    int role = ((Integer)(consultDocument.get("role"))).intValue();
                     user.setRole(role);
                     user.setUserName((String) consultDocument.get("user_name"));
                     user.setEmail((String) consultDocument.get("email"));
