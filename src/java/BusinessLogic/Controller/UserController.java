@@ -65,11 +65,12 @@ public class UserController {
 
         UserDAO userDAO = new UserDAO();
         User userCreate = userDAO.createUser(user);
-
+        LoginLdapController ldapController = new LoginLdapController();
+        String s = ldapController.createUsers(id.toString(), userName, userName, userName, password, email, "", "", "", "");
         if (userCreate != null) {
-            return "El usuario fue creado";
+            return "LDAP - "+s+", El usuario fue creado";
         } else {
-            return "El usuario NO fue creado";
+            return "LDAP - "+s+", El usuario NO fue creado";
         }
     }
 

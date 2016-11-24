@@ -69,15 +69,35 @@
                             <b:dataTableColumn value="#{s.items}" label="ID Item" />
                             <b:dataTableColumn value="#{s.quantity}" label="Quanty Item" />
                         </b:dataTable>
-
+                        
+                        <h:panelGrid columns="3" cellpadding="50">
+                            <h:column> </h:column>
+                            <h:column>
+                                <b:commandButton action="#{orderBean.usarBono()}" value ="Usar Bono" icon="minus" icon-align="left"/>
+                         
+                                <b:inputText id="descuento"  value="#{orderBean.descuento}" >
+                                 <f:facet name="prepend">
+                                    <b:icon name="euro" />
+                                 </f:facet>
+                                </b:inputText>                                
+                            </h:column>
+                                
+                        </h:panelGrid>
+                        
                         <h:panelGrid columns="3" cellpadding="5">
                             <h:column> </h:column>
                             <h:column> 
-                                <b:inputText id="totalPrice"  label="Precio total" value="#{orderBean.totalPrice}" >
+                                <b:inputText id="totalPrice"  label="Precio Total" value="#{orderBean.totalPrice}" >
                                     <f:facet name="prepend">
                                         <b:icon name="euro" />
                                     </f:facet>
                                 </b:inputText>
+                                
+                                <b:inputText id="totalPriceDes"  label="Precio Con Descuento" value="#{orderBean.precioDescuento}" >
+                                    <f:facet name="prepend">
+                                        <b:icon name="euro" />
+                                    </f:facet>
+                                </b:inputText>                                
                             </h:column>
 
                         </h:panelGrid>
@@ -90,5 +110,3 @@
         
     </ui:define>
 </ui:composition>
-
-

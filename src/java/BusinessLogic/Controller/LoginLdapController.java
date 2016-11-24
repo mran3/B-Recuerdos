@@ -5,9 +5,15 @@
  */
 package BusinessLogic.Controller;
 
+import com.novell.ldap.LDAPAttribute;
+import com.novell.ldap.LDAPAttributeSet;
 import com.novell.ldap.LDAPConnection;
+import com.novell.ldap.LDAPEntry;
 import com.novell.ldap.LDAPException;
 import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -54,7 +60,7 @@ public class LoginLdapController {
 
     public Boolean validatePassword(String user, String password){
 
-        String dn = "cn=" + user + ",ou=Bank,dc=arqsoft,dc=unal,dc=edu,dc=co";
+        String dn = "cn=" + user + ",ou=Recuerdos,dc=arqsoft,dc=unal,dc=edu,dc=co";
 
         try {
             lc.bind(dn, password);
@@ -65,5 +71,51 @@ public class LoginLdapController {
             return false;
         }
     }
+     public LDAPEntry Datos(String idUser, String firstnameUser, String lastnameUser, String usernameUser, String passwordUser, String emailUser, String telephoneUser, String addressUser, String birthdateUser, String typeUseridtypeuser) {
+        LDAPAttributeSet setAtr = new LDAPAttributeSet();
+          setAtr.add(new LDAPAttribute("objectclass", new String("inetOrgPerson")));
+          setAtr.add(new LDAPAttribute("objectclass", new String("posixAccount")));
+          setAtr.add(new LDAPAttribute("objectclass", new String("top")));
+          setAtr.add(new LDAPAttribute("cn", usernameUser));
+          setAtr.add(new LDAPAttribute("givenname", firstnameUser));
+          setAtr.add(new LDAPAttribute("sn", lastnameUser));
+          setAtr.add(new LDAPAttribute("telephonenumber", telephoneUser));
+          setAtr.add(new LDAPAttribute("mail", emailUser));
+          setAtr.add(new LDAPAttribute("userpassword", passwordUser));
+          setAtr.add(new LDAPAttribute("roomnumber", idUser));
+          setAtr.add(new LDAPAttribute("employeetype", typeUseridtypeuser));
+          setAtr.add(new LDAPAttribute("employeenumber", birthdateUser));
+          setAtr.add(new LDAPAttribute("homepostaladdress", addressUser));
+        String dn;
+        if (typeUseridtypeuser.equals("1")){
+            setAtr.add(new LDAPAttribute("objectclass", typeUseridtypeuser));
+            dn = "cn=" + usernameUser + ",ou=Recuerdos,dc=arqsoft,dc=unal,dc=edu,dc=co";
+        } else {
+            setAtr.add(new LDAPAttribute("objectclass", typeUseridtypeuser));
+            dn = "cn=" + usernameUser + ",ou=Recuerdos,dc=arqsoft,dc=unal,dc=edu,dc=co";
+        }
+        LDAPEntry newEntry = new LDAPEntry(dn, setAtr);
+        return newEntry;
+    }
+     
+        public String createUsers(String idUser, String firstnameUser, String lastnameUser, String usernameUser, String passwordUser, String emailUser, String telephoneUser, String addressUser, String birthdateUser, String typeUseridtypeuser){
+        if (connect()) {
+            try{
+                LDAPEntry usuario = Datos(idUser, firstnameUser, lastnameUser, usernameUser, passwordUser, emailUser, telephoneUser, addressUser, birthdateUser, typeUseridtypeuser);
+                lc.add(usuario);
+                lc.disconnect();
+                return "Usuario ingresado correctamente...";
+            } catch(LDAPException ex){
+                if (ex.getResultCode() == 68){
+                    System.err.println("ERROR: El Usuario ya se encuentra ingresado");
+                }
+                Logger.getLogger(HandleUsers.class.getName()).log(Level.SEVERE,null, ex);
+                return "ERROR: El usuario no se pudo agregar";
+            }
+        } else {
+            return "Conexión al servidor LDAP fallida.";
+        }
+    }
+
 }
 
